@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
+	<script type="text/javascript">
+		// # 문자열
+		//	1) "문자열", '문자열, `문자열`
+		// ecma6 버젼 이후 처리가능
+		var str1 = `문자열3`;
+		var str2 = `문자열
+			줄바꿈도 그대로 적용 `;
+		console.log(str1);
+		console.log(str2);
+		var str3 = `문자열1 ${str1} 문자열2`;
+		// ${str1}은 "", '' 사이에서는 지원하지 않는다.!!
+		console.log(str3);
+		// # javascript 연산자 허용(자동형변환과 명시적형변환)
+		var num01S = '25';
+		var num02S = '5';
+		var h2Arr = document.querySelectorAll("h2");
+		// + 연산을 위해서 Number(), parseInt()가 필요하다.(명시적 형변환)
+		//		매개변수가 숫자형 문자열이어야 가능하다. 만약에 숫자형이 아니면 NaN(not a number) 에러 메시지가 나온다
+		// + 이외에는 자동형변환을 처리해준다.
+		h2Arr[0].innerText = num01S +" + " + num02S + "=" + (Number(num01S)+Number(num02S));
+		h2Arr[1].innerText = num01S +" - " + num02S + "=" + (num01S-num02S);
+		h2Arr[2].innerText = num01S +" * " + num02S + "=" + (num01S*num02S);
+		h2Arr[3].innerText = num01S +" / " + num02S + "=" + (num01S/num02S);
+		
+		// # 데이터 유형의 확인은 typeof(변수)
+		// # 변수를 선언했지만 할당하지 않고, 호출하면 해당 에러 결과가 나온다.
+		//	1. 아에 선언되지 않으면 not undefined 에러로 진행하지 못하게 처리
+		//	2. 선언했으나 데이터를 입력하지 않은 채 호출하면 undefined표시..
+		var num77;
+		console.log(num77);
+	</script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	alert("javascript 시작");
+	console.log("javascript시작!!");
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		document.write("<h2>화면에 출력</h2>")
+		function call() {
+			alert("로그인페이지 이동")
+		}
+	</script>
+
+	<!-- 1. form 태그의 속성 기술, 예제 -->
+	<!-- 
+			기본형식
+				input type = "타입속성"
+				select
+				textarea
+		 -->
+	<form action="z03_rev.jsp">
+		검색내용:<input type="text" name="search" /><br> <input type="submit"
+			value="검색" />
+	</form>
+	<!-- 2. input 태그의 type에 따른 형식 -->
+	<!--
+ 		기본 text value: 실제 화면에 출력할 내용을 표시
+	 	<input type="text" name="txt01" value="기본입력"/><br>
+	 	패스워드 형식 : 암호화
+	 	<input type="password" name="pass01" value="pass"/><br>
+	 	파일형식 : 파일 선택
+	 	<input type="file" name="file01"/><br>
+	 	체크박스 형식: 다중선택이 가능하다
+	 	<input type="checkbox" name="check01"/>1<br>
+	 	레이디오 형식: 같은이름으로 단일선택
+	 	<input type="radio" name="radio01"/>서울 경기<br>
+	 	
+	 	<input type="@@@"/>
+	 	- text : 텍스트 입력, 줄바꿈이 없는 텍스트
+	 	- password : 비밀번호 입력, 입력한 내용이 기호로 가려짐.
+	 	- radio : 다리오버튼, 한 name에 여러 개의 라디어 버튼이 생성된 경우
+	 				그중 한 개만 선택 가능하다.
+	 				서버에 전달되는 값도 단일 데이터
+	 	- checkbox : 체크박스, 한 check된 값, 동일한 이름으로 요청key를 넘긴다.
+	 					ck=사과&ck=바나나&ck=딸기
+	 	- file : 파일 첨부
+	 			 선택된 파일명을 전송한다.
+	 	- submit : 입력받은 데이터를 서버로 전송하는 버튼
+	 				value="로그인" value값으로 된 내용이 화면에 버튼의 레이블로 보인다.
+	 	- button : 버튼
+	 				value="버튼1" value값으로 된 내용이 화면에 버튼의 레이블로 보인다.
+	 	
+	 	-->
+	<!-- 3. form 객체의 하위 요소객체와 속성을 활용하여 table로 선언된 화면에서 회원가입 화면 가입된 내용 출력 -->
+	<form action="z03_rev.jsp">
+		<table align="center" border="1" width="50%">
+			<col width="50%">
+			<col width="50%">
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" name="id" /></td>
+			</tr>
+			<tr>
+				<th>패스워드</th>
+				<td><input type="password" name="pw" /></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td><input type="radio" name="gender" value="남자" />남
+				<input type="radio" name="gender" value="여자" />여</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<!-- cols/rows 열과 행의 크기에 대한 옵션으로 같은 비율이 아니므로 화면을 확인하면서 처리 필요 -->
+				<td><input type="text" name="address" /></td>
+			</tr>
+			<tr>
+				<th>포인트</th>
+				<td><input type="text" name="pt" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="가입" /></td>
+			</tr>
+		</table>
+	</form>
+	<!-- 4. 자바스크립트 기본 출력 형식 기술 -->
+	<!-- 
+		화면에 javascript명령어로 
+			document.write("<h2>화면에 출력</h2>")
+		javascript시작 경고창으로 출력
+			alert("javascript 시작");
+		f12 콘솔창에서 출력
+			console.log("javascript시작!!");
+		-->
+
+	<!-- 5. h3를 클릭시, 경고문구로 로그인 페이지 이동이라고 출력 -->
+	<h3 onclick="call()">클릭</h3>
+
+	<!-- 6. css와 자바스크립트의 외부파일 호출방식 기술 -->
+	<!--
+		css : <link rel = "stylesheet" href="위치.css"></link>
+		js : <script src="위치.js"></script>
+		
+		절대경로인 경우에는 webapp하위에 a01_com로 설정해서 처리하는 경우를 말한다.
+		-->
+	
+	<!-- 7. link, img등에 사용되는 상대주소 절대주소 개념 예제와 함께 기술 -->
+	
+	<!-- 
+		[현재 페이지 : index.html]
+		상대경로 : 현재 페이지의 위치를 기준으로 삼아 파일 경로를 찾는다.
+			index2.html 현재 폴더 위치의 다른 페이지
+			./show/index2.html 현재 폴더 위치에서 새로운 폴더인 show를 만들어 해당 폴더에 다른 페이지
+			../index.html 상위 폴더의 페이지
+			../../index.html 상위-상위 폴더의 페이지
+		
+		절대경로 : (서버의)root 경로를 기준으로 삼아 파일 경로를 차즌ㄴ다.
+			로컬서버의 경우 주소
+			이때 javaexp는 프로젝트명,
+			물리적 경로는 /javaexp/src/main/webapp
+		 -->
+	<a href="./a01_styleOuter.html">상대 주소</a>
+	<br>
+	<a href="/a01_html/a02_htmlStart/a05_outScript.html">절대 주소</a>
+	<br>
+	
+	<!-- 8. java와 테이블 이용하요, 구매할 컴퓨터 부품 목록 리스트 -->
+	1) 속성을 확인 VO를 src에 vo패키지 안에서 클래스 선언
+	2) jsp	import="패키지명.클래스명"
+	3) jsp	객체 생성/초기값 설정..
+	4) table 구조안에서 참조변수.getXXX()호출
+
+</body>
+</html>

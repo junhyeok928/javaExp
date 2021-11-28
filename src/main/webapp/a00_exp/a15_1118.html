@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	
+</script>
+</head>
+<body>
+	<!-- 1.  
+		setTimeout은 특정한 시간 이후에 실행을 처리하는 내장함수
+			ex) var set1 = setTimeout(function(){수행할내용},1/1000초);
+		clearTimeout(set1) : 수행할 함수를 메모리 제거
+			
+		setInterval은 특정시간동안 실행처리하는 내장함수
+			ex) var set2 = setInterval(수행내용,1/1000초);
+		clearInterval(set2) : 반복 수행한 함수 메모리 제거
+		-->
+	<!-- 2, 3번 문제 -->
+	20 + 5 =
+	<input type="text" name="cul" value="" />
+
+	<script type="text/javascript">
+		function plus() {
+			var culObj = document.querySelector("[name=cul]");
+			var set01 = setTimeout(function() {
+				if (culObj.value != "") {
+					alert("입력 성공");
+					if (culObj.value == 25) {
+						alert("정답입니다.");
+					} else {
+						alert("오답입니다.");
+					}
+				} else {
+					alert("입력 실패");
+				}
+				clearTimeout(set01);
+			}, 5000);
+		}
+		plus();
+	</script>
+
+	<!-- 진짜 답 -->
+	<br>
+	<input type="text" name="num01" value = ""/> +
+	<input type="text" name="num02" value = ""/> =
+	<input type="text" name="sum" value = ""/>
+	
+	<script>
+		var num1 = Math.floor(Math.random()*20+1);
+		var num2 = Math.floor(Math.random()*20+1);
+		var tot = num1 + num2;
+		console.log(tot)
+		var obj1 = document.querySelector("[name=num01]");
+		obj1.value = num1;
+		var obj2 = document.querySelector("[name=num02]");
+		obj2.value = num2;
+		var sumObj = document.querySelector("[name=sum]");
+		var set1 = setTimeout(function(){
+			if(sumObj == tot){
+				alert("정답입니다.")
+			}else{
+				alert("오답입니다.")
+			}
+		},5000);
+	</script>
+	<!-- 4. -->
+	<script>
+		// forEach는 for in 구문보다 효과적인 처리가 가능하다.
+		// 함수를 매개변수로 받고, 그 함수의 매개변수 단위데이터,숫자형 idx,전체배열을 받아 처리가 가능
+		var arry = [ 1, 2, 3, 4 ];
+		arry.forEach(function(number, idx) {
+
+		})
+	</script>
+
+	<!-- 5. -->
+	<table id="tab01" border>
+		<tr>
+			<th>등수</th>
+			<th>제목</th>
+		</tr>
+	</table>
+	<script>
+		var music = [ "회전목마", "쉬어", "Wake up" ]
+		var listHtml = "";
+		music.forEach(function(ms, idx) {
+			listHtml += "<tr>"
+			listHtml += "<td>" + (idx + 1) + "</td>"
+			listHtml += "<td>" + ms
+			listHtml += "</tr>"
+		})
+		document.querySelector("#tab01").innerHTML += listHtml;
+	</script>
+
+	<!-- 6. -->
+	오늘로부터
+	<input type="text" name="toDay" />일
+	<input type="button" value="입력" onclick="dDay()" />
+	<h2></h2>
+	<script>
+		function dDay() {
+			var day = document.querySelector("[name=toDay]").value; // 입력된 데이터 가져오기
+			var date = new Date();
+			date.setDate(date.getDate() + Number(day));
+			var year = date.getFullYear();
+			var month = date.getMonth();
+			var date = date.getDate();
+			var h2Obj = document.querySelector("h2");
+			// toLocaleString() : 날짜와 시간정보를 해당지역에 맞게 출력
+			// toLocaleDateString() : 날짜정보를 해당 지역에 맞게 출력
+			// toLocaleTimeString() : 시간정보를 해당 지역에 맞게 출력
+			h2Obj.innerText = year + "년 " + (month + 1) + "월 " + date + "일"
+		}
+	</script>
+	<!-- 7. -->
+	<input type="button" onclick="openWin(this)" value="윈도우1" />
+
+	<input type="button" onclick="openWin(this)" value="윈도우2" />
+	<script>
+		function openWin(obj) {
+			if (obj.value == "윈도우1") {
+				var win = window.open("a14_1117.html", "",
+						"height=300,width=300")
+			} else if (obj.value == "윈도우2") {
+				var win = window.open("a13_1116.html", "",
+						"height=300,width=300")
+			}
+		}
+	</script>
+	<!-- 8. -->
+	<!-- 이벤트의 기본형식
+	1. 바로 태그에서 처리하기
+		<태그명 on이벤트명="이벤트핸들러함수()"/>
+		
+	2. javascript의 DOM 객체로 처리하기..
+		var targetObj = document.querySelector("선택자");
+		
+		html의 태그 내부에 on+이벤트명 = 자바스크립트코드를 삽입하여 사용할수 있다
+			ex) <h2 onclick = "clickEvent()"></h2>
+		this = 클릭한 현재 객체를 지칭
+		this.style.background="pink";
+	 -->
+	 
+	 <h4>클릭!</h4>
+	 <script>
+	 var h4Obj = document.querySelector("h4");
+	 h4Obj.onclick = function(){
+		 alert("안녕하세요");
+	 }
+	 </script>
+</body>
+</html>

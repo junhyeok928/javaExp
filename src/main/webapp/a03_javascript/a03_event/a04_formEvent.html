@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "폼이벤트 연습";
+		/*
+		ex) 화면에 id값을 입력할 수 있게 input태그와 버튼을 클릭하게 만들고,
+		아이디를 입력하고, 버튼을 클릭하면, 하단에 입력한 id: @@@를 출력하게 하세요.
+		1) [body]화면 구성	: id입력, 버튼, 출력 h3
+			- 식별한 이름을 지정 : name=@@, id=@@@, class=@@@, 태그
+		2) [script] 사용할 요소 객체 선언. : DOM 객체로 선언
+		3) 이벤트 처리할 요소 객체에 이벤트 핸들러(익명함수) 할당.
+		4) 이벤트핸들러(익명함수)에 처리할 내용 구현
+			- 특정요소객체의 내용/value값 가져오기.
+			- 출력할 내용을 만들어 출력할 요소(DOM)에 출력하기.
+		 */
+		var btnObj = document.querySelector("#btn01");
+		btnObj.onclick = function() {
+			alert("버튼이 클릭!!");
+			var num01Val = document.querySelector("[name=id]").value; // 입력된 값
+			var show = "ID :" + num01Val;
+			document.querySelector("h3").innerText = show;
+		}
+	}
+</script>
+</head>
+<body>
+	<h2 align="center"></h2>
+	<p align="center">
+		<input type="text" name="id" size="4" /> <input type="button" id="btn01" value="입력" id="txtId" /><br>
+		<!-- id속성으로 식별할 수 있지만, name 속성은 서버에 전송할 때, 필요해서 form객체 요소객체로 사용된다. -->
+	<h3 align="center"></h3>
+</body>
+</html>

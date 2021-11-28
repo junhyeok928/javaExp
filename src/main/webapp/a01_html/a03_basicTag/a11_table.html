@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+	</head>
+	<body>
+		<!-- 
+		# 테이블 태그
+		1. 데이터를 리스트하여 행/열로 표시할 때, 사용되는 태그이다.
+		2. 아래와 같은 구성 요소로 되어 있다.
+			1) 최상위 : table
+				일반표를 삽입하기 위한 태그이다.
+			2) 차상위 :
+				thead : 표의 머리를 생성하는 부분이다.
+				tbody : 표의 본문을 생성하는 부분이다.
+				tfoot : 표의 꼬리를 생성하는 부분이다.
+			3) 행단위 태그
+				tr : table row로 행단위로 row를 생성한다.
+			4) 열단위 태그
+				th : table header로 상단에 테이블의 head로 타이틀 컬럼을 철리할 때
+					사용된다. 기본적으로 중앙정렬, 굵기가 두껍게 처리된다.
+				td : table data로 테이블의 실제 데이터를 처리할 때, 사용된다.
+		3. 테이블의 속성
+			1) table 태그의 속성
+				border : 굵기 지정.
+				align : 포함하고 있는 요소 객체 대비 정렬 위치 지정.
+				width : 넓이 지정. % px|pt 단위로 지정할 수 있다, %는 전체 화면대비 크기를 %로 지정한다.
+				height : 높이 지정
+				 # 고급속성
+        		cellpadding : 전체 cell 단위 내용물과 border와의 가격을 지정
+        		cellspacing : cell단위의 사이의 border의 간격을 지정...
+			2) td의 속성
+				colspan="2" : 컴럼의 병합의 갯수를 지정해주는 속성
+				rowspan ="3" : 행단위 병합의 갯수를 지정해주는 속성, 3개의 행단위로 같은 컬럼이 
+		4. css의 속성
+        	border-collapse:collapse;
+        	2중라인의 border를 1라인으로 번경 처리..
+        	border: 1px solid green;
+        	라인의 굵기, 형태, 색상의 속성을 지정한다.		
+		 
+		 cf) 최상에 선언한 style은 전체적으로 영향을 미치고, body 중간에 선언한
+		 style은 해당 라인 이후에 영향을 미친다.
+		 1) 우선 순위는 하단에 선언된 것을 우선순위로 한다.
+		 	h1{color:red;}
+		 	..
+		 	h1{color:blue;}
+		 2) 태그 style ="속성:속성값;"	가장 우선순위가 높다..
+		 -->
+		<h2>테이블 (5x3)</h2>
+			<table border = "1">
+				<tr><td>1,1</td><td colspan="2">1,2</td></tr>
+				<tr><td>2,1</td><td>2,2</td><td>2,3</td></tr>
+				<tr><td>3,1</td><td>3,2</td><td rowspan="3">3,3</td></tr>
+				<tr><td>4,1</td><td>4,2</td><td>4,3</td></tr>
+				<tr><td>5,1</td><td>5,2</td><td>5,3</td></tr>
+			</table>
+
+		<h2>테이블 홍길동</h2>
+		<table border="1">	<!-- border는 2중 라인의 굵기를 지정해준다. -->
+		 	<thead>
+		 		<tr><th>번호</th><th>이름</th><th>점수</th></tr>
+		 	</thead>
+		 	<!-- th는 데이터의 타이틀을 나타내고, 기본적으로 글자가 굵고 중앙 정렬을 지원한다. -->
+		 	<tbody>
+				<tr><td>1</td><td>홍길동</td><td>70</td></tr>
+			 </tbody>
+			 <tbody>
+				<tr><td>2</td><td>김길동</td><td>80</td></tr>
+			</tbody>
+			<tbody>
+				<tr><td>3</td><td>신길동</td><td>90</td></tr>
+			</tbody>
+			<tfoot>
+				<tr><td></td><td>총계</td><td>240</td></tr>
+			</tfoot>
+		</table>
+
+		<h2>테이블 예제1</h2>
+		<table align = "center" border="1" width = "50%">
+			<tr><td rowspan="2">1</td><td colspan="2">2</td></tr>
+			<tr><td>3</td><td>4</td></tr>
+		</table>
+
+		<h2>테이블 예제2</h2>
+		<table align = "center" border="1" width = "50%">
+			<tr><td>1</td><td rowspan="3">2</td><td>3</td></tr>
+			<tr><td>4</td><td>5</td></tr>
+			<tr><td>6</td><td>7</td></tr>
+		</table>
+
+		<h2>테이블 예제3</h2>
+		<table align = "center" border="1" width = "50%">
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td colspan="3">4</td></tr>
+			<tr><td>5</td><td>6</td><td>7</td></tr>
+		</table>
+
+		<h2>테이블 예제4</h2>
+		<table align = "center" border="1" width = "30%">
+			<tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+			<tr><td>8</td><td rowspan="3", colspan="3">17</td></td><td>14</td></tr>
+			<tr><td>7</td><td>15</td></tr>
+			<tr><td>6</td><td>16</td></tr>
+			<tr><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr>
+		</table>
+	</body>
+</html>

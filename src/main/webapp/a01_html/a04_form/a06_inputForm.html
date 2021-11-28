@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+	</head>
+	<body>
+		<!-- 
+		# 테이블과 함께 하는 입력양식
+		1. 테이블을 활용하면 입력양식을 보다 정렬된 내용을 처리할 수 있다.
+		2. 처리순서
+			1) 입력 양식 테이블 만들기
+			2) 필요로 하는 td에 입력 form 처리하기
+		 -->
+		<h2>테이블 예제1</h2>
+		<table align = "center" border="1" width = "50%">
+			<col width="50%">
+			<col width="50%">
+			<tr><th>이름</th><td><input type="text" name="name"/></td></tr>
+			<tr><th>성별</th><td>
+				<input type="radio" name="gender"/>남
+				<input type="radio" name="gender"/>여
+			</td></tr>
+			<tr><td colspan="2"><input type="submit" value="가입"/></td></tr>
+		</table>
+	</body>
+</html>

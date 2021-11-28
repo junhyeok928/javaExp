@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+		<style>
+		
+		</style>
+		<script>
+		
+		</script>
+	</head>
+	<body>
+	<!-- 1. js에서 문자열 할당형식 3가지 예제와 함께 기술 -->
+	<script type="text/javascript">
+		var str1 = "문자열";
+		var str2 = '문자열';
+		var str3 = `문자열`;
+		// str3의 문자열 할당형식은 줄바꿈도 적용이 가능하고 $기호를 사용하여 데이터를 삽입할수 있다
+		/* ex)
+		function call(msg){
+			alert(msg);
+			alert(num+5);
+		}
+		<input type ="button" onclick="call('안녕')"/>
+		<input type ="button" onclick="call("안녕")"/> // 에러발생
+		<input type ="button" onclick="call(\"안녕\")"/>
+		쌍따옴표나 홑따옴표 안에 다시 쌍따옴표나 홑따옴표를 써야할 떄, \"식으로 바로 앞에 선언.
+		함수를 호츌할 때, 매개값의 유형에 따라서 반드시 쌍따옴표나 홑따옴표는 문자열을 입력할 때, 명시화 하여야 한다.
+		숫자를 입력할ㄹ 때는 숫자 자체만 입력한다.
+		*/
+	</script>
+	<!-- 2. 테이블에 좋아하는 야구선수 .. -->
+	<table align = "center" width="300px" border="1px">
+		<tr><th>팀명</th><th>이름</th><th>기록</th></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+		<tr><td></td><td></td><td></td></tr>
+	</table>
+	<script>
+		// var team01 = '기아';
+		// var name01 = '홍길동';
+		// var record01 = 3.5;
+		// var team02 = '삼성';
+		// var name02 = '김길동';
+		// var record02 = 1.5;
+		// var team03 = '엘지';
+		// var name03 = '신길동';
+		// var record03 = 5;
+
+		// var tdArray = document.querySelectorAll("td");
+		// tdArray[0].innerText = team01;
+		// tdArray[1].innerText = name01;
+		// tdArray[2].innerText = record01;
+		// tdArray[3].innerText = team02;
+		// tdArray[4].innerText = name02;
+		// tdArray[5].innerText = record02;
+		// tdArray[6].innerText = team03;
+		// tdArray[7].innerText = name03;
+		// tdArray[8].innerText = record03;
+		var tds = document.querySelectorAll("td");
+		var p01 = {tname:"SK",name:"홍길동",record:0.321};
+		var p02 = {tname:"KT",name:"김길동",record:2.3};
+		var p03 = {tname:"두산",name:"신길동",record:0.341};
+		tds[0].innerText = p01.tname;
+		tds[1].innerText = p01.name;
+		tds[2].innerText = p01.record;
+		
+		tds[3].innerText = p02.tname;
+		tds[4].innerText = p02.name;
+		tds[5].innerText = p02.record;
+
+		tds[6].innerText = p03.tname;
+		tds[7].innerText = p03.name;
+		tds[8].innerText = p03.record;
+	</script>
+	<!-- 3. 함수의 기본형식 두가지를 기술 -->
+	<!-- 
+	익명 함수
+	ex) var call = function(){
+			함수를 선언한 후 호출해야한다. 호출시에는 ()를 포함해야한다.
+		};
+		call();
+		call = 변수;
+		call = function(){}
+		같은 이름으로 여러가지 다른 기능의 함수를 재할당하거나 type까지 변경할 때, 활용할 수 있다.
+
+	선언적 함수
+	ex) function call(){
+			선언되기 전 호출가능 하다
+		}; 
+	-->
+
+	<!-- 4. 물건가격과 갯수를 매개변수로 입력받아 총계 리턴 -->
+	<script>
+		var all = total(12000, 3);
+		alert(all+"원입니다!!")
+		function total(price, cnt){
+			return price * cnt
+		}
+	</script>
+
+	<!-- 5. h3 7개 선언 무지개 색상을... -->
+	<h3 onclick="change(this)">RED</h3>
+	<h3 onclick="change(this)">ORANGE</h3>
+	<h3 onclick="change(this)">YELLOW</h3>
+	<h3 onclick="change(this)">GREEN</h3>
+	<h3 onclick="change(this)">BLUE</h3>
+	<h3 onclick="change(this)">INDIGO</h3>
+	<h3 onclick="change(this)">PURPLE</h3>
+
+	<script>
+		function change(obj){
+			// onclick="change(this)"로 선언했으므로 클릭한 모든 정보를 객체로 전달된다.
+			// obj에서는 해당 객체를 메모리로 오기에
+			// 클릭한 객체가 가지고 있는 물자열 정보를 가져올 수 있다.
+			obj.style.background=obj.innerText; // 그 문자열 생상 정보를 배경객상으로 할당하여 처리한다.
+
+		}
+	</script>
+
+	<!-- 6. 변수의 js에서 자동형변환 -->
+	<!-- '25' 과 같이 선언된 문자열에 들어간 숫자는
+	사칙연산시 덧셈을 빼고 나머지는 자동으로 parseInt()와
+	같이 정수형으로 자동형변환 처리된다.
+	덧셈같은 경우는 그대로 이어 붙여지므로 parseInt 또는 Number가 필요하다. 
+
+	숫자형 문자열일 경우
+		사칙연산자인 경우에는 +를 제외한 연산자
+		비교, 논리 연산자 모두의 경우
+		자동으로 문자열이 숫자형으로 변환이 되어 처리되는 것을 말한다.
+	ex) "5" * "5" ==> 25 형변환이 되어 연산 처리-->
+
+	<!-- 7. json 형식이란 무엇인지.. 예제 -->
+	<!-- json은 javascript object notation이다.
+	ex) var json1 = {age: 24}
+	와 같이 속성:속성값 넣는다. 
+	
+	json 형식이란 {속성:속성값} 형식으로 객체가 생성이 되어, 데이터를 처리하는 형태를 말한다.
+	var 변수명 = {속성:속성값, 속성2:속성2값...};
+	-->
+	<table id="tab" align = "center" width="300px" border="1px">
+		<tr><th>자동차명</th><th>가격</th><th>연비</th></tr>
+		<tr><td></td><td></td><td></td></tr>
+	</table>
+	<script>
+		// var car = {name:"소나타", price:2100, fuel:10};
+		// var tdArry = document.querySelectorAll("td")
+
+		// tdArry[9].innerText = car.name;
+		// tdArry[10].innerText = car.price;
+		// tdArry[11].innerText = car.fuel;
+		
+		// 지정한 테이블(#tab) 하위에 td를 지정할 때
+		var carTab = document.querySelectorAll("#tab td");
+		var car = {name:"소나타", price:2100, fuel:10};
+		carTab[0].innerText = car.name;
+		carTab[1].innerText = car.price;
+		carTab[2].innerText = car.fuel;
+	</script>
+
+	<!-- 8. for문 이용하여 1~100까지 번호를 5의 배수만 출력(console)하고, 마지막 라인에 전체 합산 1~100, 2의배수만 합산 -->
+	<script>
+		var tot = 0;
+		var tot2 = 0;
+		for(var i = 1; i<=100;i++){
+			if((i%5)==0){
+				console.log(i);
+			}
+			if((i%2)==0){
+				tot2 += i;
+			}
+			tot += i;
+			if(i==100){
+				console.log("모든 수의 합 : "+ tot)
+				console.log("2의 배수의 합 :"+ tot2)
+			}
+		}
+	</script>
+	</body>
+</html>

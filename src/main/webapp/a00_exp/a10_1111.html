@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 테이블의 기복 속성과 하위 요소 객체들의 특석을 기술하세요.
+    
+    테이블의 기본 속성 : 데이터를 리스트하여 행열 표시할 때 사용된다.
+    table 태그의 속성
+		border : 굵기 지정.
+		align : 포함하고 있는 요소 객체 대비 정렬 위치 지정.
+		width : 넓이 지정. % px|pt 단위로 지정할 수 있다, %는 전체 화면대비 크기를 %로 지정한다.
+		height : 높이 지정
+        # 고급속성
+        cellpadding : 전체 cell 단위 내용물과 border와의 가격을 지정
+        cellspacing : cell단위의 사이의 border의 간격을 지정...
+	td의 속성
+		colspan="2" : 컴럼의 병합의 갯수를 지정해주는 속성
+		rowspan ="3" : 행단위 병합의 갯수를 지정해주는 속성
+
+    css의 속성
+        border-collapse:collapse;
+        2중라인의 border를 1라인으로 번경 처리..
+        border: 1px solid green;
+        라인의 굵기, 형태, 색상의 속성을 지정한다.
+    요소 객체들의 특성 
+    최상위 : table
+        일반표를 삽입하기 위한 태그이다.
+    차상위 :
+        thead : 표의 머리를 생성하는 부분이다.
+        tbody : 표의 본문을 생성하는 부분이다.
+        tfoot : 표의 꼬리를 생성하는 부분이다.
+    행단위 태그
+        tr : table row로 행단위로 row를 생성한다.
+    열단위 태그
+        th : table header로 상단에 테이블의 head로 타이틀 컬럼을 철리할 때
+         사용된다.
+        td : table data로 테이블의 실제 데이터를 처리할 때, 사용된다. -->
+
+    <!-- 2. 다음과 같은 테이블의 구조 -->
+    <h2>테이블 1x2</h2>
+    <table align = "center" border="3" width = "50%" cellpadding="22">
+        <tr><td>1</td></tr>
+        <tr><td>2</td></tr>
+    </table>
+    <h2>테이블 2x3</h2>
+    <table align = "center" border="1" width = "50%" style="border-collapse: collapse; border: 2px double green;">
+        <tr><td>1</td><td>2</td><td>3</td></tr>
+        <tr><td colspan="2">4</td><td>5</td></tr>
+    </table>
+    <h2>테이블 2X4</h2>
+    <table align = "center" border="1" width = "50%">
+        <tr><td rowspan="2">1</td><td colspan="3">2</td></tr>
+        <tr><td>3</td><td>4</td><td>5</td></tr>
+    </table>
+    <h2>테이블 2X5</h2>
+    <table align = "center" border="1" width = "50%">
+        <tr><td rowspan="2">1</td><td colspan="2">2</td><td>3</td><td>4</td></tr>
+        <tr><td>5</td><td>6</td><td colspan="2">7</td></tr>
+    </table>
+    <h2>테이블 4X3</h2>
+    <table align = "center" border="1" width = "50%">
+        <tr><td>1</td><td rowspan="4">2</td><td>3</td></tr>
+        <tr><td>4</td><td>5</td></tr>
+        <tr><td>6</td><td>7</td></tr>
+        <tr><td>8</td><td>9</td></tr>
+    </table>
+
+    <!-- 3. jsp가 처리되는 최종 화면이 출력되는 과정을 기술하세요
+    jsp ==> @@@.java ==> @@@.class =실행=> 결과 html 파일 만들기 ==> client에게 html 전달 ==> 브라우저를 통해서 html받기 -->
+    1. [서버]서버 단에서 jsp를 작성시, 작성 후, 저장하는 순간
+        @@@.jsp ==> @@@.java ==> @@@.class
+    2. [서버]tomcat을 실행하는 순간 @@@.class가 컨테이너 메모리에 로딩되어 객체가 생성이 된다
+        2,3번 항목은 프레임워클를 쓸때와 쓰지 않을 때와 차이가 있다.
+        호출시, 실체 객체가 생성되는 경우가 많다.
+    3. [클라이언트] ==> 서버 요청사용자가 url주소로 해당 jsp를 호출하는 순간
+        @@@.class의 내용이 실행이 되어, 자바+html코드의 최종 결과 html을 만들어서
+        스트림을 html코드를 client에 전달한다.
+        cf) Stream 자바 또는 어플리케이션의 api객체로 network/아일로 데이터를 전송해주는 역할을 하는 객체
+    4. [클라이언트] 받은 html을 문자(태그와 문자,자바스크립트등)을 받아 태그와 css는 해당 내용을 핸더링하고,
+        자바스크립트는 브라우저내의 컴파일러에 의해 해석해서 메모리에 로딩시켜 실행을 한다.
+        cf) node 계열 프로그램에서는 javascript를 서버에서 컴파일 시켜 보낸다.
+    5. [클라이언트] 원하는 웹화면과 자바스크립트 실행 결과를 볼 수 있다.
+    <!-- 4, 5 JSP 문제 -->
+
+    <!-- 6. img 태그의 기본태그 속성과 속성값 기술, 상대적 경로로 이미지 호출
+    기본 태그와 속성.
+		<img 속성="속성값"/>
+	주요속성
+		- src : 이미지가 있는 경로를 절대경로, 상대경로로 지정하여 해당 이미지를 불러올 수 있다.
+		- alt : src에 해당 이미가 없을 때, 대체되어 나오는 문자열을 지정할 수 있다.
+		- width : 이미의 너비를 지정
+		- height : 이미지의 높이를 지정  -->
+    <img src="img1.jpg" width="100px" height="100px">
+
+    <!-- 7. table과 이미지태그를 조합하여, 온라인 쇼핑몰과 같이 이미지 물건정보 가격을 표시하여 리스트 출력 -->
+    <table align="center" width="70%" border="2">
+		<col width="20%">
+		<col width="40%">
+		<col width="40%">
+		<tr>
+			<td><img src="img1.jpg" width="100px" height="100px"></td>
+			<td>고슴도치 사진</td>
+			<td>판매가 10000원</td>
+		</tr>
+		<tr>
+			<td><img src="/javaexp/z01_img/img2.jpg" width="100px" height="100px"></td>
+			<td>고슴도치 사진</td>
+			<td>판매가 20000원</td>
+		</tr>
+		<tr>
+			<td><img src="img3.jpg" width="100px" height="100px"></td>
+			<td>고슴도치 사진</td>
+			<td>판매가 15000원</td>
+		</tr>
+	</table>
+    <!-- 8. jsp 문제 -->
+</body>
+</html>

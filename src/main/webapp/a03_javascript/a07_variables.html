@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+		<style>
+		
+		</style>
+		<script>
+		/*
+		javascript는 순차별로 실행된다
+		DOM을 인식(document.querySelector())할려면,
+		먼저, 태그를 선언하고 하단의 해당 코들를 호출하거나.
+		함수로 해당 내용을 클릭시, 호출하면 인식을 할 수있다. - 화면이 모두 두 로딩된
+			상황이기에 상단에 선언하여도 인식을 하여 처리 할수 있다.
+		*/
+		function call(){
+			var h1Array = document.querySelectorAll("h2");
+			h1Array[0].innerText="함수호출은 상단이라도 처리된다."
+		}
+		</script>
+	</head>
+	<body>
+		<h2></h2>
+		<h2></h2>
+		<h2></h2>
+		<table border = "1">
+				<tr><th>물건명</th><td></td></tr>
+				<tr><th>가격</th><td></td></tr>
+				<tr><th>갯수</th><td></td></tr>
+			</table>
+		<script>
+		// # js의 변수와 할당.
+		var name = "홍길동";
+		var loc = '서울 신림동';
+		var age = 25;
+		console.log("이름:"+name);
+		console.log("나이:"+age);
+		console.log("사는곳:"+loc);
+		
+		// 여러개의 동일한 태그일 때는 querySelectorAll를 통해서 배열로 인식한다.
+		var h1Array = document.querySelectorAll("h2");
+		// 출력하는 요소객체에 데이터를 처리할 때. innerText()라는 메서드를 활용한다.
+		h1Array[0].innerText = "이름:" + name;
+		h1Array[1].innerText = "나이:" + age;
+		h1Array[2].innerText = "지역:" + loc;
+		
+		var obj = '사과';
+		var price = 1200;
+		var cnt = 3;
+		
+		var tdArray = document.querySelectorAll("td");
+		tdArray[0].innerText = obj;
+		tdArray[1].innerText = price;
+		tdArray[2].innerText = cnt;
+		
+		</script>
+	</body>
+</html>

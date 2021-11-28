@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	
+</script>
+</head>
+<body>
+	<table width="300px" height="300px" border="1px">
+		<tr>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		/*
+		# 자바스크립트의 내장함수.
+		1. 시간 관련..
+			setInterval(반복할 함수, 반복할시간(1/1000))
+			ex) 1초 단위로 변경 처리
+			setInterval(function(){
+				
+				
+			}, 1000);
+		 */
+		var tdArry = document.querySelectorAll("td");
+		// tdArry[0] ~ tdArry[8]
+		var idx = 0;
+
+		setInterval(function() {
+			for (var jdx=0; jdx < tdArry.length; jdx++) {
+				tdArry[jdx].style.background = "";
+			}
+			// 0.5초 마다 하나씩 배경색상이 변경처리.
+			// idx++%9 : index를 테이블의 td의 index 범위인 0 ~ 8 까지 반복하게
+			// 하기 위해서 나머지 연산자를 이용한다
+			/* idx	idx%3
+			   0	0
+			   1	1
+			   2	2
+			   3	0
+			   4	1
+			   5	2
+			   6	0
+			   7	1
+			   나머지 연산잘를 이용하면 특정 숫자의 범위가 반복하여 처리할 수 있다.
+			*/
+			tdArry[idx++ % 9].style.background = "yellow";
+			console.log(idx+":"+idx% 9); // 0 ~ 8 계속 반복 수행
+
+		}, 500);
+		// 1000 ==> 1초,   500==> 0.5초 단위로 반복된 내용..
+	</script>
+</body>
+</html>

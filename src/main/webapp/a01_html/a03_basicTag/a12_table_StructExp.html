@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+		<style>
+			td{
+				text-align:center;
+				width:20%;
+			}
+			th{
+				text-align:center;
+				width: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 
+		1. 기준 행열이 어떻게 되는가를 확인하고,
+		2. colspan, rowspan할 td를 확인
+		3. colspan, rowspan를 통해서 삭제될 td를 확인
+		
+		1) 기본으로 2X3행 테이블.
+		2) 2, 1 번의 td를 병합
+		3) 2번 옆 td, 1번 밑 td 삭제
+		 -->
+		<h2>테이블 예제1</h2>
+		<table align = "center" border="1" width = "50%">
+			<tr><td rowspan="2">1</td><td colspan="2">2</td></tr>
+			<tr><td>3</td><td>4</td></tr>
+		</table>
+
+		<h2>테이블 예제2</h2>
+		<table align = "center" border="1" width="300px" height="300px">
+			<tr><td>1</td><td rowspan="3">2</td><td>3</td></tr>
+			<tr><td>4</td><td>5</td></tr>
+			<tr><td>6</td><td>7</td></tr>
+		</table>
+
+		<h2>테이블 예제3</h2>
+		<table align = "center" border="1" width="300px" height="300px">
+			<tr><td>1</td><td>2</td><td>3</td></tr>
+			<tr><td colspan="3">4</td></tr>
+			<tr><td>5</td><td>6</td><td>7</td></tr>
+		</table>
+
+		<h2>테이블 예제4</h2>
+		<table align = "center" border="1" width="300px" height="300px">
+			<tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td></tr>
+			<tr><td>8</td><td rowspan="3" colspan="3">17</td><td>14</td></tr>
+			<tr><td>7</td><td>15</td></tr>
+			<tr><td>6</td><td>16</td></tr>
+			<tr><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr>
+		</table>
+
+		<h2> 테이블 예제5</h2>
+		<table align = "center" border="1" width="70%">
+			<thead>
+				<tr><th>번호</th><th>이름</th><th>국어</th><th>영어</th><th>수학</th><th>계</th></tr>
+			</thead>
+			<tbody>
+				<tr><td>1</td><td>홍길동</td><td>70</td><td>80</td><td>90</td><td>240</td></tr>
+				<tr><td>2</td><td>김길동</td><td>70</td><td>80</td><td>90</td><td>240</td></tr>
+				<tr><td>3</td><td>신길동</td><td>70</td><td>80</td><td>90</td><td>240</td></tr>
+			</tbody>
+			<tfoot>
+				<tr><td colspan="5">총계</td><td>720</td></tr>
+				<tr><td colspan="5">전체 평균</td><td>80</td></tr>
+			</tfoot>
+		</table>
+	</body>
+</html>

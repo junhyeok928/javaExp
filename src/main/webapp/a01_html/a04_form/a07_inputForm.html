@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+	</head>
+	<body>
+	<!-- 
+	# form 데이터의 요청처리
+	1. form 선언부분에 action="전달할 jsp를 선언"
+		ex) action="a07_rev.jsp"
+	2. method를 속성으로 선언하지 않으면 get 방식으로 처리된다.
+		method="get|post"
+		get 방식일때는, 주소창에 입력된 값을 submit했을 때, 아래와 같은 형식으로
+		나타나면 전송되는 방식을 말한다.
+		a07_rev.jsp?pname=홍길동&price=3000
+		post방식은 주소창에 입력한 값이 보이지 않지만, 내부적으로 요청값을 전달하는 방식을
+		말한다.
+	3. 요소객체들은 속성이 name="pname", name="price"
+	4. name으로 설정된 속성값을 기준으로 다음 페이지에서 요청값을 ${param.요청이름}
+		입력한 값으로 받을 수 있다. ${param.pname}, ${param.price}, ${param.cnt}, ${param.discount}
+	 -->
+	 	<form action = "a07_rev.jsp">
+		<table align = "center" border="1" width = "50%">
+			<col width="50%">
+			<col width="50%">
+			<tr><th>물건명</th><td><input type="text" name="pname"/></td></tr>
+			<tr><th>가격</th><td><input type="text" name="price"/></td></tr>
+			<tr><th>갯수</th><td><input type="text" name="cnt"/></td></tr>
+			<tr><th>구분</th><td>
+			<input type="radio" name="sale" value="할인"/>할인
+			<input type="radio" name="sale" value="할인안됨"/>할인안됨
+			</td></tr>
+			<tr><td colspan="2"><input type="submit" value="구매"/></td></tr>
+		</table>
+		</form>
+	</body>
+</html>

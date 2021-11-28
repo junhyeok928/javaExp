@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+		<style>
+		
+		</style>
+		<script>
+		window.onload=function(){
+			var h3Arry = document.querySelectorAll("h3");
+			// id값을 이용 , id = "ch01", "ch02", "ch03"
+			for(var idx=0;idx<3;idx++){
+				h3Arry[idx].onmouseover=function(){
+					this.style.background="blue";
+				};
+				h3Arry[idx].onmouseout=function(){
+					this.style.background="yellow";
+				}
+			}
+		}
+		</script>
+	</head>
+		<h3>안녕하세요</h3>
+		<h3>반갑습니다</h3>
+		<h3>감사합니다</h3>
+	</body>
+</html>

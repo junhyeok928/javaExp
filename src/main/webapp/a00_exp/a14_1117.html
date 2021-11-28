@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	
+</script>
+</head>
+<body>
+	<!-- 1. 배열과 객체의 속성과 속성값 선언과 할당형식 2가지를 기술하세요. -->
+	<!-- 
+	[]배열은 index를 기준으로 데이터에 접근한다.
+	ex)	var car = ["소나타","마티즈","그랜저"];
+		car[0]은 "소나타"이다.
+		car['0']도 같은 결과
+	{}객체는 속성인 키와 할당된 속성값을 활용한다. 속성:속성값
+	ex) var car = {cName:"소나타", price:2000, color:"black"};
+		car.cName = "그랜저" 처럼 속성값을 변경할수 있다 
+	-->
+	<!-- 2. 객체로 영화 예매 내용을 속성으로 선언하여 for in 구문 -->
+	<script type="text/javascript">
+		var movie = {
+			title : "인터스텔라",
+			pay : 12000,
+			time : "15:00~18:00"
+		};
+		for (prop in movie) {
+			console.log(prop + ":" + movie[prop]);
+		}
+	</script>
+
+	<!-- 3. json 객체로 함수 형식 메서드 포함하여 기차 예매를 처리하게 하세요 -->
+	<script type="text/javascript">
+		// cf. var arry = [300, "하이맨", function(){},{name:"홍길동"}];
+		//	 js는 동적 배열이 지원하고 그 개념 중, 데이터 유형도 여러유형이 할당
+		//	 될 수 있다.
+		var train = {
+			start : "수서",
+			arrival : "천안아산",
+			pay : 11700,
+			choice : function(start, arrival, pay) {
+				this.start = start;
+				this.arrival = arrival;
+				this.pay = pay;
+			},// 필드로 출발역과 도착역, 금액을 변경해서 처리할 때 활용 메서드
+			buy : function(cnt) {
+				var tot = cnt * this.pay;
+				console.log("총 비용: " + tot + "원")
+				// + 연산일때는 앞 문자열에 의해 문자열로 자동형반환이
+				// 일어나기에 ()괄호를 이용해서 형변환을 피하고 연산부터
+				// 처리되게 한다.
+				// ()괄호는 연산자우선순위 처리의 최상위이기에 활용을 요한다.
+			}
+		}
+		train.buy(3);
+	</script>
+	<!-- 4. 2021년 kbo 정규리그 팀순위 -->
+	<table align="center" id="tab01" width="30%" border="1">
+		<tr>
+			<th>순위</th>
+			<th>팀명</th>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		var kboTeams = [ {
+			rank : 1,
+			tname : "KT"
+		}, {
+			rank : 2,
+			tname : "삼성"
+		}, {
+			rank : 3,
+			tname : "LG"
+		} ]
+		var kboHtml = "";
+		for ( var idx in kboTeams) {
+			var team = kboTeams[idx];
+			kboHtml += "<tr>";
+			for ( var prop in team) {
+				kboHtml += "<td>" + team[prop] + "</td>";
+
+			}
+			kboHtml += "</tr>";
+		}
+		//출력할 DOM객체 선택 #tab01 ==> 상단에 선언된 id="tab01"일때 호출 가능
+		var tab01 = document.querySelector("#tab01");
+		// 테이블에 선언된 기본 타이틀 부분에 추가하여 처리하기 위해 += 기호 사용
+		tab01.innerHTML += kboHtml;
+	</script>
+
+	<!-- 5. Date 객체를 이용하여 출력 -->
+	<h2 align="center"></h2>
+	<script type="text/javascript">
+		var d = new Date();
+		var year = d.getFullYear();
+		var month = d.getMonth();
+		var date = d.getDate();
+		var h2Obj = document.querySelector("h2");
+
+		h2Obj.innerText = year + "년 " + (month + 1) + "월 " + date + "일"
+	</script>
+	<!-- 6. 구구단 출력 -->
+	<script type="text/javascript">
+		for (var i = 2; i <= 9; i++) {
+			for (var j = 1; j <= 9; j++) {
+				console.log(i + " X " + j + " = " + (i * j));
+			}
+		}
+	</script>
+</body>
+</html>

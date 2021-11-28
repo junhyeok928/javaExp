@@ -1,0 +1,253 @@
+# javascript knowledge map
+1. 개요
+	환경설정.
+	jaascript의 웹프로그램에서 역할, 실행...
+	에러 트래킹 f12, console.log("");
+	외부설정 js 호출 방법 : 공통적인 js내용이 필요할 때, 각 개별 화면에서 호출해서
+		사용할 수 있도록 한다 : <script src="공통js.js"/>
+	처리순서 : 
+		1.라인별 순차적으로 처리된다.
+		2.body의 태그
+			javascript의 DOM호출
+			DOM의 경우, 태그가 호출되어 메모리가 로딩된 후 ,
+			document.querySelector()
+			document.querySelectorAll()을 이용해서 호출하여야 한다.
+		3.함수호출은 상단에 선언하더라도, 태그 객체들이 메모리로 로딩된 상황이기에 가능하다.
+			function call(){
+				document.querySelector("태그");
+			}
+			<태그 on이벤트 = "call()">
+		4. window.load=function(){
+				// 윈도우가 로딩된 상황에서 함수를 호출하기 때문에,
+				// 상단에서 DOM 객체를 인식할 수 있다.
+			}
+	입력 / 출력
+		- 화면에서 입력/출력
+			confirm(): boolean, prompt(): 입력된 문자열
+			alert():메시지 경고창 출력, document.write() : 화면 출력
+		- 내부적인 console창에서 출력
+			console.log()
+2. 기본 문법
+	변수 선언 : var(일반변수선언), let(지역변수/전역변수 구분), const(상수선언)
+		ex) var num01 = 25; (변수명과 할당)
+	데이터 유형 (5가지): typeof(변수명)
+		문자열(string), 숫자(number), boolean, 함수(function), 객체(object)-배열
+	형변환 : 자동형변환(연산자), 
+		"2" * "3" ==> 6, ==> + 연산자 이외는 모두 자동형변환되어 숫자로 연산
+		"2" + "3" ==> 23 ==> +연산자는 문자열 연결처리가 된다.
+		"안녕하세요"+25+30 ==> 앞에있는 문자열에 영향에 의해 25, 30은 문자열로 자동형변환이
+			일어난다
+		+ 연산자만 기본적으로 연결처리해주고,
+		연산을 하기위해, 형변환 함수(parseInt(), parseDouble(),
+			Number())를 처리해주어야한다.
+		ex) parseInt("25") + parseInt("30") ==> 55
+		parseInt()의 경우 실수형을 정수형으로 casting 해주는 기능도 포함하고 있다.
+		
+		if("25" == 25 ) : 논리/비교연산식에서 자동형변환이 일어난다, 이 경우는 true로 처리
+		if("25" ===25) : 논리/비교연산식에서 ===,!==를 이용해서 데이터 유형과 데이터값이 같은지
+			여부를 확인한다. 이 경우는 false로 처리.
+	연산자 -대입/비교/논리
+	
+	삼항연산자	- (비교/논리)?true일때 처리:false일때 처리;
+		ex) var result = point>=70? "합격":"불합격";
+		
+	# unfefined 자료형
+	- 선언은 되지 않는 변수 호출시는 에러발생(프로세서 중단)
+	- 선언은 되었으나 데이터를 할당하지 않은 경우, undefined메시지 출력(프로세스는 진행)
+	NaN(not a number) : 숫자형이 아닌데 연산처리할 때, 발생하는 에러..
+		parseInt("이십오");
+		==> 숫자인지 여부를 확인해서 데이터를 조건처리하는 함수 지원isNaN() : Is not a number?
+		if(!isNaN(parseInt("25"))){	// 숫자 데이터일 때, 처리할 조건
+			// not isNaN으로 숫자형일 때 처리
+		}
+	
+3. 조건문
+	if else, switch 자바와 동일
+4. 반복문
+	for(), while(), do{}while() 자바와 동일
+	for(var idx in 배열){
+		idx : 배열의 index : 주의 index가 문자열형태로 호출된다.
+		배열[idx] : 배열에 해당 index의 값
+	}
+	for(var prop in 객체){
+		prop : 객체의 속성
+		객체[prop] : 객체 속성에 대한 값
+	}
+	
+	내장함수를 통해서 배열을 효과적으로 처리하고 있다. forEach();
+	ex) 배열. forEach(function(data, index, arry){
+			data : 배열안에 있는 단위 데이터 가져오기.
+			index: 배열의 index 가져오기
+			arry : 배열의 전체 데이터 가져오기
+		});
+------------
+5. 함수
+	익명함수 : 변수에 이름없는 함수를 대입처리.
+		var fun01 = function(){};
+	선언함수
+		function fun02(){}
+	내장함수 : setInterval:시간당 반복 처리, setTimeout: 특정 시간 후, 수행
+		var set01 = setInterval(funtion(){
+			if(조건문){
+				clearInterval(set01); // 반복을 특정조건에 의해 중단 처리
+			}
+		}, 1000);
+		clearTimeout();	// setTimeout으로 지정한 내용 자원해제.
+		parseInt(), parseDouble, Number()
+		inNaN()
+		eval("25+30"): 특정 문자열을 실행처리해주는 함수.
+		prompt(), confirm()
+		
+		forEach : 배열의 데이터를 다위 데이터로 처리할 때, 사용된다.
+6. 객체
+	json형태 객체 처리
+	var jObj = {속성: 속성값, 속성2: 속성2값, 메서드:함수형:function(){}};
+	jObj.속성 
+	// 새로운 속성을 추가할 수도 있고. 
+	delete jObj.속성 : 저장된 속성을 삭제할 수도 있다.
+	
+	var arry1 = [데이터1, 데이터2, 데이터3];
+	var objArry = [{속성:속성값, 속성2:속성2값},
+					{속성:속성값, 속성2:속성2값},
+					{속성:속성값, 속성2:속성2값},];
+	
+7. 생성자 함수
+	함수형으로 객체의 구조를 선언하고, 호출 처리하는 형태
+	funcion Person (name, age, loc){
+		this.name = name;
+		this.age = age;
+		this.loc=age;
+	}
+	var p01 = new Person("홍길동", 25,"서울");
+	p01.name;
+	// ecma6이후 버전에서는 아래와 같은 class형태도 지원한다.
+	class Product{
+		constructor(name, price, cnt){	// 자바와 달리 생성자를 constructor 키워드를 사용한다.
+			this.name = name;
+			this.price = price;
+			this.cnt = cnt;
+		}
+		buy(){
+			console.log(this.name);	// 반드시 필드는 this.이라는 접두어를 이용해서 사용하여야 한다.
+			console.log("총계:"+(this.price*this.cnt));
+		}
+	}
+	var prod = new Product("사과", 3000,2);
+	prod.buy();
+8. 내장 객체
+	Math.floor()
+	Math.ceil()
+	Math.round()
+	Math.random()
+		Math.floor(Math.random()*경우의 수 + 시작수);
+	Date (날짜처리 객체)
+	String (문자처리 객체)
+	
+	function call(){
+		arguments : 함수객체안에 사용되는 내장객체로 매개변수를 배열로 받아서 처리할 수 있다.
+		arguments[0],
+		arguments[1],
+		arguments[2]
+	}
+	call(30);	// 가변적으로 매개변수를 사용할 수 있고, 해당 값을 순서에 따라
+				// 내장 객체인 arguments에 배열의 순서별로 할당해서 사용한다.
+				
+	call(2, 5);
+	call(4, 2, 4);		
+9. 브라우저 객체 모델(BOM)	: 윈도우 창	
+	window.open("","",""); 브라우저 창이 새롭게 로딩되어 처리.
+	
+10. *** 문서 객체 모델(DOM)	: 화면 출력
+	태그를 객체화하여 속성을 변경하여 여러가지 동적인 처리
+	1. 선택자의 유형
+		태그 속성	선택형식
+		   id = "아이디명" document.querySelector("#아이디명");
+		class = "클래스명" document.querySelectorAll(".클래스명");
+		 name = "속성값"   document.querySelector("[name=속성값");
+		     태그명        document.querySelector("태그명");
+		 
+	<상위태그>
+		<하위태그>		   document.querySelector("상위태그 하위태그");
+		ex) <table id = "tab01"
+				<tr><td></td>
+			하나의 화면에 테이블이 여러개 있고, 특정 테이블 하위에 td를 선택해서
+			처리할 때,
+			var tds = document.querySelectorAll("#tab01 td");
+	2. 다중 선택 여부
+		하나의 객체 : var obj = document.querySelector
+		여러개의 객체: var arry = document.querySelectorAll
+	
+	var obj = document.querySelector("선택자");
+	var arry = documnet.querySelector("선택자");
+	
+	
+	# 선택자(css에서 사용되는 선택자)
+		1. 태그명 : document.querySelector("h1");
+		2. 아이디명 : 화면단위 유일한 식별자를 속성을 지정했을 떄,
+		<input id = "in01"/>
+		document.querySelector("#in01");
+		3. 클래스명 : 화면에 하나의 묶을 단위로 처리할 때,
+			<td class="cls01"></td>
+			<td></td>
+			<td class="cls01"></td>
+			<td></td>
+			<td class="cls01"></td>
+			<td></td>
+			var cls01Arr = document.querySelectorAll(".cls01");
+			cls01Arr[0];
+			cls01Arr[1];
+			cls01Arr[2];
+			
+		#DOM 객체의 속성들.
+		1) 화면 출력 처리 DOM
+			.innerText : 출력할 내용을 할당하거나, 가져올 수 있다.
+			.innerHtml : html코드를 포함해서 렌더링을 할 필요가 있을 때..
+				cf) div01.innerText = "<h2>안녕</h2><p>내용</p>;
+					태그를 포함한 내용 그래도 출력
+				cf) div01.innerHtml="<h2>안녕</h2><p>내용</p>;
+					태그가 적용되어 해당 태그의 기능내용을 포함해서 출력
+		2).속성 = 속성값;(기본속성)
+		ex) tab.align="center"; //테이블이나 h1객체의 기본속성으로 중장정렬처리
+			imgObj.src = "img01.png; // 이미지 태그에 이미지 변경 처리..
+			idObj.value="하이맨" //input 타입의 입력값을 강제로 할당 처리.
+		3). style.css = css 속성값 (style 속성)
+			tdObj.style.textAlign = "center"; 
+			// css의 - (데쉬)에 의해 구분된 속성은 js에서는 camel case형태로 대분자를 추가하여
+			// 	구분한다.
+			td의 정렬을 중앙처리
+			tdObj.style.
+		
+11. 이벤트	: 클릭, 마우스, 키보드 입력..
+	1) 이벤트 핸들러 함수 : 이벤트가 일어날 때, 처리할 내용
+	2) 이벤티 :특정한 액션으로 이벤트 핸들러 함수를 호출하게 하는 기능.
+		click : 마우스 클릭시 이벤트
+		mouseover/mouseout : 마우스 커서의 이동을 대상 위치에 위에 있느냐에 따른 이벤트
+		keyup/keydown - event.keyCode : 키보드의 고유값으로 식별하여 이벤트 처리.
+		focus : 특정 요소객체에 focus를 위치 시켰을 때ㅡ 발생하는 이벤트.
+		
+	3) 구조
+		<태그 on = "핸들러함수()"/>
+		var obj = document.querySelector("#btn01");
+		// DOM객체에 익명 핸들러 함수를 지정하여 처리할 수 있다.
+		obj.oncile=function(){
+			alert("이벤트 호출");
+		};
+	
+	
+12. 예외처리.
+	try{
+	
+	}(exception c)
+
+자바스크립트 내장 함수
+	자체적으로 제공하는 몇 가지 함수
+		alert(), confirm(), prompt()
+	타이머 함수
+		var 변수1 = setTimeout(함수, 1/1000)
+		 해당 시간 후 , 실행할 함수 처리
+		var 변수2 = setInterval(함수, 1/1000)
+		 해당 시간마다 실행할 함수처리
+		clearTimeout(변수1);
+		 setTimeout 처리중단
+		clearInterval(변수2);
+		 setInterval 반복중단

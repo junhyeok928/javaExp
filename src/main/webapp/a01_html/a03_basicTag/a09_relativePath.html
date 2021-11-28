@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>오늘도 화이팅</title>
+	</head>
+	<body>
+	<!-- 
+	# 페이지 이동 상대 경로
+	1. 일단, 같은 폴드에 있는 페이지는 따로 경로명을 설정하지 않더라고 이동이 가능하다.
+	이것을 현재 페이지를 기준한다는 말로 상대 경로라고 한다.
+	2. 상대 경로는 현재 파일을 기준으로 하기에 다른 폴더를 호출할 때, 아래의 형식으로 접근할 수 있다.
+		1) ../ : 현재 폴더를 포함하고 있는 상위 폴더로 이동한다.
+			ex) ../start.html	현재 폴더의 상위 폴더인 a01_html로 이동하여
+				그 폴더에 포함된 파일인 start.html을 호출할 수 있게 된다.
+		2) ../a02_htmlStart/a01_start.html
+		    상위 경로로 가서
+		3) ../../index.html : 상위의 상위 폴더에 포홤되어 있는 페이지 호출
+		4) ./a01_com/a01_com.html : 현재 파일이 있는 폴더의 하위에 폴더에 있는 페이지 호출
+	-->
+	 	<h2>상대경로 이동</h2>
+	 	<a href="a08_show.html">상대경로1(a08_show.html)</a><br>
+		<a href="../start.html">상대경로2(start.html)</a><br>
+		<a href="../a02_htmlStart/a01_start.html">상대경로3(start.html)</a><br>
+		<a href="../../index.html">상대경로4(index.html)</a><br>
+		<a href="./a01_com/a01_com.html">상대경로5(a01_com.html)</a><br>
+
+		<h2>상대경로 이동</h2>
+		<a href="a01_fontTag.html">상대경로1</a><br>
+		<a href="../index.html">상대경로2</a><br>
+		<a href="../a02_htmlStart/a05_outScript.html">상대경로3</a><br>
+		<a href="../../index.html">상대경로4</a><br>
+		<a href="./a02_com/a01_call.html">상대경로5</a><br>
+	</body>
+</html>
