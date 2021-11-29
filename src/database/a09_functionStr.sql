@@ -43,6 +43,10 @@ FROM dual
 
 /*
 3. instr : 특정 문자가 출현하는 첫번째 위치를 반환처리. 
+	instr ('sql*plus', '*') ==> 4
+	cf) 특정한 검색문자가 있ㅇㄹ 때와 없을 때를 구분하여 처리하고자 할때.
+	instr(컬럼명,'검색문자') > 0;
+	0은 없을 때, 1이상은 검색된 문자의 위치를 return한다.
 */
 SELECT INSTR('sql*plus','*') FROM dual;
 
@@ -79,7 +83,11 @@ FROM EMP e
 	1) 문자열에 왼쪽으로 부터 특정 문자열을 삭제하거나,
 		오른쪽에 있는 문자열을 삭제할 때, 활용된다.
 	2) 공백데이터나 필요없는 데이터가 양 옆에 붙어있는 경우 삭제해 버리고 사용할 때 쓴다.
-
+	select *
+	from emp
+	where ltrim(ename, '') = 'HIMAN';
+	'	HIMAN', 'HIMAN' ==> 검색을 해서 처리해준다.
+	WHERE ENAME = ltrim('	HIMAN',' ' );
 */
 SELECT LTRIM('****sql****','*') FROM dual;
 SELECT RTRIM('****sql****','*') FROM dual;
