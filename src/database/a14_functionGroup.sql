@@ -12,12 +12,18 @@
 		특정 컬럼의 데이터를 그룹별로 함수에 의해 처리하는 것을 말한다.
 		부서별로 사원의 최대 급여, depno(부서), 최대급여 max(sal)
 		그룹할 컬럼은 부서이고, 부서별로 급여를 확인하여 최대급여를
-		뽑아내는 것을 말한다,
+		뽑아내는 것을 말한다.
+		cf) 그룹을 2개 컬럼이상을 할 때는 group by 컬럼1, 컬럼2
+		하고, select 컬럼1, 컬럼2, 그룹함수 @@@
+		로 데이터 그룹을 두개 이상을 컬럼으로 지정할 때 사용된다.
+		예를 들어 학년별로 평균을 내가다, 학년과 반별로 평균을 낼때,
+		추가할 컬럼으로 처리하면 된다.
 		ex) select deptno, max(sal)
 		from emp
 		group by deptno;
 	4. 그룹함수의 종류
-		count(): 행의 갯수
+		count(): 행의 갯수 cf) count(*) : 전체 행을 대상으로 행의 갯수처리 처리
+			count(컬럼명) : 특정한 컬럼을 대상으로 행의 갯수를 처리하되, null을 제외가 된다.
 		max()  : null을 제외한 모든 행의 최대값
 		min()  : null을 제외한 모든 행의 최소값
 		sum()  : null을 제외한 모든 행의 합
@@ -101,7 +107,7 @@ GROUP BY JOB ;
 
 SELECT DECODE(MOD(MGR, 2),0,'짝수',1,'홀수','분류안됨') 홀짝, AVG(SAL) 
 FROM EMP e
-GROUP BY mod(MGR,2)
+GROUP BY mod(MGR,2);
 -- nvl (mgr,0) : null 일때는 0으로처리
 -- mod(nvl(mgr,0), 2) : 0,1로 처리
 
@@ -115,6 +121,7 @@ FROM EMP e
 GROUP BY DEPTNO ;
 -- 부서별 최대급여 출력하는데, 최대급여가 3000이상인 경우에 출력할 때는
 -- where 조건문이 아닌 HAVING을 활용하여 조건을 처리하여야 한다
+-- 주의) 그룹함수가 적용된 데이터는 where 조건문으로 처리가 안되고 having 조건에 넣어야한다.
 SELECT DEPTNO ,MAX(SAL) 
 FROM EMP e 
 GROUP BY DEPTNO 
