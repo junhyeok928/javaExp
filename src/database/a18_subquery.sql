@@ -22,4 +22,86 @@ WHERE SAL = (
 	SELECT MAX(SAL)
 	FROM EMP e2 
 );
-SELECT  * FROM 
+-- 입사 분기별로 최고 급여자의 전체
+-- 1. 입사분기별 최고급여
+SELECT TO_CHAR(HIREDATE ,'Q'), MAX(sal)
+FROM EMP e 
+GROUP BY TO_CHAR(HIREDATE ,'Q');
+-- 2. 다중욜 SUBQUERY 설정
+SELECT TO_CHAR(HIREDATE,'Q'), e.*  
+FROM EMP e
+WHERE (TO_CHAR(HIREDATE,'Q'), sal) IN (
+	SELECT TO_CHAR(HIREDATE, 'Q'), MAX(SAL)
+	FROM EMP e2
+	GROUP BY TO_CHAR(HIREDATE ,'Q')
+);
+
+-- ex) 직책별로 최고 급여자의 emp전체 정보를 처리하세요.
+--	1) 직책별 최고급여
+--  2) 다중열 처리 조건으로 사원정보 출력
+SELECT job, MAX(SAL) 
+FROM EMP e 
+GROUP BY JOB ;
+
+SELECT * 
+FROM EMP e 
+WHERE (JOB ,SAL) IN (
+	SELECT JOB , MAX(SAL)
+	FROM EMP e2 
+	GROUP BY JOB 
+);
+
+/*
+ * # inline 테이블 처리(subquery)
+ * 1. 조인할 테이블을 ()로 만들어 데이터를 일단, 먼저 처리한 후에
+ * 		그 이후에 다른 테이블과 조인 관계를 처리할 때 사용된다. 
+ */
+-- 부서별 최고 급여자 정보를 출력
+SELECT *
+FROM (
+	SELECT DEPTNO, MAX(SAL) msal
+	FROM EMP e 
+	GROUP BY DEPTNO 
+	) a, emp e
+WHERE a.deptno = e.deptno
+AND a.msal = e.sal;
+
+SELECT * 
+FROM EMP e 
+WHERE (JOB,SAL) = 
+	(SELECT JOB, SAL
+			FROM EMP e2 
+		WHERE sal =800);
+-- where (JOB, SAL) = (단일 데이터 SUBQUERY)
+-- WHERE (JOB, sal) - IN (한개이상 데이터 subquery)
+	
+-- INline view라고 사용자 정의 query를 가상의 테이블 뷰로 만들어
+-- 연관관계 있는 테이블과 조인해서 데이터를 처리하는것을할만하
+
+--ex)
+SELECT * 
+FROM (
+	SELECT *
+	FROM EMP e 
+	WHERE DEPTH = 10
+	) a, emp b
+WHERE  a.sal = b.sal);
+
+/*
+ * inline view 처리하기
+ * 1. inline들어갈 query를 만들고 
+ * 2. join 테이블 alias명을 지정한다
+ * 3. 두 테이블의 join 조건을 where 조건으로 처리한다.
+ */
+
+--ex) 부서별 최근 입사자의 사원 정보
+-- 1) 부서번호별 최근 입사일a
+-- 2) emp b
+-- 3) where a.hiredate = b.hiredate and a.deptno = b.deptno
+SELECT *
+FROM (
+	SELECT DEPTNO, MAX(hiredate) HIREDATE
+	FROM EMP e
+	GROUP BY DEPTNO
+	) a, emp b
+where a.hiredate = b.hiredate and a.deptno = b.deptno;

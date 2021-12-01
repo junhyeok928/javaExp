@@ -6,7 +6,7 @@
    where 대상컬럼 between 범위1 and 범위2
  */
 SELECT ENAME , SAL 
-FROM EMP e 
+FROM EMP e
 ORDER BY SAL ;
 SELECT *
 FROM SALGRADE s ;
