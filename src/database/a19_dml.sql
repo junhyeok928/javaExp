@@ -44,6 +44,17 @@ SELECT * FROM emp100;
 CREATE  TABLE emp101
 AS SELECT * FROM emp;
 SELECT *  FROM emp101;
+
+
+-- 복사 테이블은 특정 컬럼과 특정 조건으로 테이블을 만들 수도 있다.
+CREATE TABLE emp_dept_100
+AS SELECT dname, job, ename, HIREDATE , SAL 
+FROM EMP e , DEPT d 
+WHERE e.DEPTNO  = d.DEPTNO 
+AND e.DEPTNO = 10;
+SELECT * FROM emp_dept_100;
+
+
 -- # 구조만 복사하는 테이블 만들기.
 SELECT *
 FROM emp e
@@ -81,7 +92,8 @@ INSERT INTO emp102 VALUES(1111,'전준혁','사원',111,sysdate,4000,400,20);
 /*
 1. sysdate : 현재 날짜/ 시간으로 date 타입 컬럼에 현재 날짜/시간 입력한다.
 2. to_date('문자열데이터', '문자열데이터의 입력형식'):
-		문자열 데ㅣ터를 지정된 입력양식에 맞게 data타입 컬럼에 날짜/시간 입력
+		문자열 데이터를 지정된 입력양식에 맞게 data타입 컬럼에 날짜/시간 입력
+		시간 HH:MI:SS - 시간분초도 지정하여 등록할 수 있다.
 		ex) to_date('2021/06/23','YYYY/MM/DD')
  */
 SELECT  * FROM emp102;

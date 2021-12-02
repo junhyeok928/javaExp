@@ -22,6 +22,35 @@ WHERE SAL = (
 	SELECT MAX(SAL)
 	FROM EMP e2 
 );
+-- 부서번호(deptno)별로 최고급여자(sal) 정보(기타 사원번호,사원명,입사일,보너스)를 출력..
+-- 이때, 필요한 것이 다중행 subquery이다.
+SELECT DEPTNO , MAX(SAL)
+FROM EMP
+GROUP BY DEPTNO ;
+
+SELECT *
+FROM EMP e 
+WHERE DEPTNO = 30
+AND SAL  = 2850;
+-- 보단 간편하게 처리할 수 있게 만든것이 다중행 subquery
+SELECT *
+FROM EMP e 
+WHERE (DEPTNO, SAL) = (
+	SELECT deptno, SAL 
+	FROM EMP e2 
+	WHERE DEPTNO = 30
+	AND SAL = 2850
+);
+-- 자주쓰는 in형태
+SELECT *
+FROM EMP e 
+WHERE (DEPTNO, SAL) IN (
+	SELECT DEPTNO , MAX(SAL)  
+	FROM EMP e2
+	GROUP BY DEPTNO 
+);
+
+
 -- 입사 분기별로 최고 급여자의 전체
 -- 1. 입사분기별 최고급여
 SELECT TO_CHAR(HIREDATE ,'Q'), MAX(sal)
@@ -34,7 +63,8 @@ WHERE (TO_CHAR(HIREDATE,'Q'), sal) IN (
 	SELECT TO_CHAR(HIREDATE, 'Q'), MAX(SAL)
 	FROM EMP e2
 	GROUP BY TO_CHAR(HIREDATE ,'Q')
-);
+)
+ORDER BY TO_CHAR(HIREDATE,'Q'); 
 
 -- ex) 직책별로 최고 급여자의 emp전체 정보를 처리하세요.
 --	1) 직책별 최고급여
@@ -52,7 +82,12 @@ WHERE (JOB ,SAL) IN (
 );
 
 /*
- * # inline 테이블 처리(subquery)
+ * # inline 뷰 처리(subquery)
+ * 0. 뷰(view) : 실제물리적으로 만든 테이블이 아닌 프로그램(sql)상 만든 가상의 테이블을 말한다.
+ * 		==> 사원정보, 부서정보인 가상의 뷰로 필요로 하는 컬럼만 선택해서
+ * 		하나의 테이블로 만들어 사용한다
+ * 		select dname, ename
+ * 		from emp_dept;
  * 1. 조인할 테이블을 ()로 만들어 데이터를 일단, 먼저 처리한 후에
  * 		그 이후에 다른 테이블과 조인 관계를 처리할 때 사용된다. 
  */
@@ -63,7 +98,7 @@ FROM (
 	FROM EMP e 
 	GROUP BY DEPTNO 
 	) a, emp e
-WHERE a.deptno = e.deptno
+WHERE a.deptno = e.deptno -- inline VIEW로 된 부서번화와 emp의 부서번호를 조인
 AND a.msal = e.sal;
 
 SELECT * 
@@ -76,7 +111,7 @@ WHERE (JOB,SAL) =
 -- WHERE (JOB, sal) - IN (한개이상 데이터 subquery)
 	
 -- INline view라고 사용자 정의 query를 가상의 테이블 뷰로 만들어
--- 연관관계 있는 테이블과 조인해서 데이터를 처리하는것을할만하
+-- 연관관계 있는 테이블과 조인해서 데이터를 처리하는것을 말한다.
 
 --ex)
 SELECT * 
@@ -85,7 +120,7 @@ FROM (
 	FROM EMP e 
 	WHERE DEPTH = 10
 	) a, emp b
-WHERE  a.sal = b.sal);
+WHERE a.sal = b.sal);
 
 /*
  * inline view 처리하기
