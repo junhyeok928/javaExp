@@ -14,8 +14,11 @@
 	4) query rewrite : 함수 기반 인덱스 생성 권한
 	5) backup any table : 테이블 백업 권한
 	6) create session : 데이터베이스에 접속할 수 있는 권한.
+	
+	==> dba 권한으로 위의 내용을 포함하는 권한으로 설정하여 처리할 수 있다.
 	7) create table/view/sequence/procedure
 		데이터베이스의 객체들을 생성하는 권한.
+	==> 데이터베이스 내에 여러가지 객체들을 사용할 수 있는 권한 : resource
  */
 
 /*
