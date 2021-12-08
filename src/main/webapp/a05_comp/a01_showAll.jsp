@@ -14,6 +14,7 @@
 		// obj : DOM - html 태그를 객체화하여 사용
 		if (obj.align == "center"){
 			obj.align = "right";	// 객체.속성= 속성값
+			// var obj = document.querySelector("h2")[1]; 화면에서 2번째 DOM객체.
 		}else{
 			obj.align = "center";
 			obj.style.background = "pink"; 

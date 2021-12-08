@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import =  "javaexp.a04_vo.A02_Person"
+    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,37 @@
 	        break;
 		} 
 	}
+	function ex6_1(obj){
+		var timee = setInterval(rainbow(obj),1000);
+	}
+	function rainbow(obj){
+		switch (obj.style.background){
+		case "red":
+			obj.style.background = "orange";
+		break;
+		case "orange":
+			obj.style.background = "yellow";
+		break;
+		case "yellow":
+			obj.style.background = "green";
+		break;
+		case "green":
+			obj.style.background = "blue";
+		break;
+		case "blue":
+			obj.style.background = "indigo";
+		break;
+		case "indigo":
+			obj.style.background = "purple";
+		break;
+		case "purple":
+			obj.style.background = "red";
+		break;
+        default: 
+             obj.style.background = "red";
+        break;
+	} 
+	}
 </script>
 </head>
 <body>
@@ -78,7 +110,7 @@
 	<h1 onclick ="ex5(this)">예제5번</h1>
 	
 <!-- [2단계:확인] 6. javascript의 이벤트와 이벤트핸들러를 통해서, h2 클릭시마다 배경 색상이 연속적으로 무지개색상으로 변경되게 하세요. -->
-	<h2 onclick ="ex6(this)">예제6번</h2>
+	<h2 onclick ="ex6_1(this)">예제6번</h2>
 	
 <!-- [1단계:개념] 7. jsp의 코드가 들어가는 부분과 출력이 처리되는 부분을 구분하여 처리하세요 -->
 <%
@@ -95,12 +127,21 @@
    String pname="햄버거";
    int price = 6900;
    int pcnt = 3;
+   // 객체
+   //	1) 사용하게 될 객체 선언.
+   //	2) import 처리..
+   //	3) 객체 생성..
+   A02_Person p01 = new A02_Person("홍길동", 25, "서울신림");
    String str[] = {"사과", "6900", "3"};
 %>
    <h2 align="center">물건명 : <%=pname %></h2>
    <h2 align="center">가격 : <%=price %></h2>
    <h2 align="center">갯수 : <%=pcnt %></h2>
    <h2 align="center">가격 : <%=str[1] %></h2>
+   <h2 align="center">이름 : <%=p01.getName()%></h2>
+   <h2 align="center">나이 : <%=p01.getAge()%></h2>
+   <h2 align="center">주소 : <%=p01.getLoc()%></h2>
+   
 
 </body>
 </html>
