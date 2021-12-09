@@ -128,57 +128,68 @@ session.setAttribute("키","값");
             4   [ ][X][  ] [  ]
             ..
                   [점수확인] -->
-<h2>번호   문제   정답</h2>
-<%
-   int num1 = 0;
-   int num2 = 0;
-   String[] gu = {"X", "+", "-", "/"};
-   int bun = 0;
-   for(int i=0; i<10; i++) {
-      num1 = (int)(Math.random()*9+1);
-      num2 = (int)(Math.random()*9+1);
-      bun = (int)(Math.random()*4);
-      
-   
-%>
 <form>
-   <%=i+1%>
-   <input type="text" name="num1" size="2" value=<%=num1%>>
-   <input type="text" name="gu" size="2" value=<%=gu[bun]%>>
-   <input type="text" name="num2" size="2" value=<%=num2%>> =
-   <input type="text" name="result" size="2"><br>
+<table border="1" style="border-collapse:collapse;">
+   <tr>
+      <th>번호</th><th>문제</th><th>정답</th>
+   </tr>
+<%
+   String[] gu = {"X", "+", "-", "/"};
+   for(int i=0; i<10; i++) {
+      int num1 = (int)(Math.random()*9+1);
+      int num2 = (int)(Math.random()*9+1);
+      int bun = (int)(Math.random()*4);
+%>
+   <tr>
+      <td>
+         <%=i+1%>
+      </td>
+      <td>
+         <input type="text" name="num1" size="2" value=<%=num1%>>
+         <input type="text" name="gu" size="2" value=<%=gu[bun]%>>
+         <input type="text" name="num2" size="2" value=<%=num2%>>
+      </td>
+      <td>
+         <input type="text" name="result" size="2">
+      </td>
+   </tr>
 <%
    }
 %>
-   <input type="submit" value="점수확인">
-   </form>
+   <tr>
+      <td colspan="3">
+         <input type="submit" value="점수확인">
+      </td>
+   </tr>
+</table>
+</form>
    
 <%
    int cnt = 0;
    String[] num1S = request.getParameterValues("num1");
    String[] num2S = request.getParameterValues("num2");
    String[] resultS = request.getParameterValues("result");
-   String[] gu1 = request.getParameterValues("gu");
-   if(num1S!=null && num2S!=null && resultS!=null && gu1!=null) {
-   for(int i=0; i<10; i++) {
-         int num11 = Integer.parseInt(num1S[i]);
-         int num21 = Integer.parseInt(num2S[i]);
-         int result1 = Integer.parseInt(resultS[i]);
-         String gu2 = gu1[i];
-         if(gu2.equals("X")) {
-            if((num11*num21)==result1) {
+   String[] guS = request.getParameterValues("gu");
+   if(num1S!=null && num2S!=null && resultS!=null && guS!=null) {
+      for(int i=0; i<10; i++) {
+         int num1I = Integer.parseInt(num1S[i]);
+         int num2I = Integer.parseInt(num2S[i]);
+         int resultI = Integer.parseInt(resultS[i]);
+         String guS1 = guS[i];
+         if(guS1.equals("X")) {
+            if((num1I*num2I)==resultI) {
                cnt+=10;
             }
-         }else if(gu2.equals("+")) {
-            if((num11+num21)==result1) {
+         }else if(guS1.equals("+")) {
+            if((num1I+num2I)==resultI) {
                cnt+=10;
             }
-         }else if(gu2.equals("-")) {
-            if((num11-num21)==result1) {
+         }else if(guS1.equals("-")) {
+            if((num1I-num2I)==resultI) {
                cnt+=10;
             }
-         }else if(gu2.equals("/")) {
-            if((num11/num21)==result1) {
+         }else if(guS1.equals("/")) {
+            if((num1I/num2I)==resultI) {
                cnt+=10;
             }
          }
@@ -187,8 +198,7 @@ session.setAttribute("키","값");
    <h3>점수확인 : <%=cnt %></h3>
 <%
    }
-%>                
-                  
+%>
 <!-- [1단계:확인] 6. jsp의 MVC 개발패턴에 대하여 기술하세요 -->
 <!--     
 	1) Controller : 중재자 역할
@@ -200,8 +210,6 @@ session.setAttribute("키","값");
         - controller에 의해 호출이 되고, 전달해온 model 데이터를 형식에 맞게 웹 화면에 출력한다. -->
 <!-- [3단계:확인] 7. MVC패턴으로 controller/view을 만들어서 호출하되 모델 데이터로 국어,영어,수학점수 설정하고, view단에서
             해단 점수와 합산/평균을 처리하세요 -->
-
-
 
 </body>
 </html>

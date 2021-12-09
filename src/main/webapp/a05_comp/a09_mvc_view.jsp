@@ -26,7 +26,7 @@
 	2) model : controller 안에서 선언..
 	3) view : a09_mvc_view.jsp
  --%>
- 	<h2>View단!!</h2>
+ 	<h2>${modelData }</h2>
  	<h3>controller에서 온 모델:${show}</h3>
 </body>
 </html>
