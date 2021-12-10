@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "테이블 안에 이미지 추가.";
+	}
+</script>
+</head>
+<body>
+	<!-- 
+		# 테이블 안에 이미지 처리하기.
+		1. 테이블 구조를 만들고,
+		2. td안에 이미지 태그를 처리.. -->
+	<h2></h2>
+	<table>
+		<tr>
+			<td>
+				<img src="img1.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img2.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img3.jpg" width="200px" height="200px" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img1.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img2.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img3.jpg" width="200px" height="200px" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="img1.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img2.jpg" width="200px" height="200px" />
+			</td>
+			<td>
+				<img src="img3.jpg" width="200px" height="200px" />
+			</td>
+		</tr>
+
+	</table>
+	<!-- 
+	ex)
+	물건 이미지		물건명 	가격
+	-->
+	<table border="1">
+		<tr>
+			<td rowspan="2">
+				<img src="img1.jpg" width="200px" height="200px" />
+			</td>
+			<td>고슴도치1</td>
+		</tr>
+		<tr>
+			<td>3000</td>
+		</tr>
+		<tr>
+			<td rowspan="2">
+				<img src="img2.jpg" width="200px" height="200px" />
+			</td>
+			<td>고슴도치2</td>
+		</tr>
+		<tr>
+			<td>3000</td>
+		</tr>
+		<tr>
+			<td rowspan="2">
+				<img src="img3.jpg" width="200px" height="200px" />
+			</td>
+			<td>고슴도치3</td>
+		</tr>
+		<tr>
+			<td>3000</td>
+		</tr>
+	</table>
+</body>
+
+</html>
