@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "시작";
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<form name="fo" method="post" action="a13_buyList.jsp">
+		물 건 명 :
+		<input type="text" size="15" name="pname" value="" />
+		<br /> 구매갯수 :
+		<input type="text" size="15" name="cnt" value="" />
+		<br />
+		<input type="submit" value="완료" />
+	</form>
+</body>
+</html>

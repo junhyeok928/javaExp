@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "콤보박스만들기";
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h3>오늘은 어떤 점심을?</h3>
+	<form action="">
+		<select name="lunch1" id="">
+			<option value="">한식</option>
+			<option value="">중식</option>
+			<option value="">일식</option>
+			<option selected>양식</option>
+			<!-- selected : 기본 선택 옵션-->
+		</select><br>
+		<select name="lunch2" size="2" id="">
+			<option value="">한식</option>
+			<option value="">중식</option>
+			<option value="">일식</option>
+			<option selected>양식</option>
+			<!-- selected : 기본 선택 옵션-->
+		</select><br>
+		<!-- multiple : 하나의 항목에 ctrl 누른 상태에서 두가지 선택 가능-->
+		<select name="lunch2" size="3" multiple>
+			<option value="">한식</option>
+			<option value="">중식</option>
+			<option value="">일식</option>
+			<option selected>양식</option>
+			<!-- selected : 기본 선택 옵션-->
+		</select><br>
+		<input type="submit" value="제출">
+	</form>
+</body>
+</html>
