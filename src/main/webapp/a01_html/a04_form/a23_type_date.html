@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[시간과 날짜 처리 요소]오늘도 감사한 날! 화이팅!</title>
+<style>
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "시간 정보 입력 폼 요소";
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<p>초기 세팅 : 2022년 1월 1일 9시 30분으로 설정해보세요</p>
+	<form action="">
+		<pre>
+			month:<input type="month" value="2022-01"/><br>
+			week:<input type="week" value="2022-W1"/><br>
+			date:<input type="date" value="2022-01"/><br>
+			time:<input type="time" value="09:30"/><br>
+			<!--
+				2022-01-01T09:30:00:00
+				ISO형식으로 날짜T기간을 나타낸다
+			-->
+			local:<input type="datetime" value="2022-01-01T09:30:00:00"/><br>
+		</pre>
+	</form>
+	<!--
+		Ex) 새일축하합니다.
+		당신의 생일은 2000년 05년 20일 입니다 틀리면 수정하시고
+		파티시간과 장소를 입력하세요
+		생일 : [] ==> 생일 년도 월일 선택
+		생일파티시간: []==> 시간선택
+		장서 : [] ==> 장소 text로 입력
+		submit
+	-->
+	<form action="a24_birthday.jsp">
+		<pre>
+			생일 : <input type="date" name="birthday"><br>
+			생일파티 시간 : <input type="time" name="birthday"><br>
+			장소 : <input type="text" name="birthday">
+			<input type="submit" value="생일 파티 등록">
+		</pre>
+	</form>
+</body>
+</html>

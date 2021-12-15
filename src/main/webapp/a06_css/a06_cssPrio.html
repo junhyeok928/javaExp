@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>[스타일 합치기 및 오버라이딩]오늘도 화이팅</title>
+		<link rel="stylesheet" href="externalcss.css">
+		<style>
+			p{color:blue;font-size: 12px;}
+		</style>
+		<script>
+		window.onload=function(){
+			var h2Obj = document.querySelector("h2");
+			h2Obj.innerText = "p 태그의 스타일의 중첩과 오버라이딩";
+		}
+		</script>
+	</head>
+	<body>
+	<!-- 
+	# 스타일의 합치기와 오버라이딩
+	1. css는 상위항목에 선언된 내용을 계속 합쳐져서 최종 태그에 적용이 된다.
+		외부 ==> style ==> inline : 동일하지 않는 속성은 계속 합쳐져서 적용
+	2. css는 상위항목에 충돌되는 동일한 항목(속성)은 하위에서 선언된 내용을 오버라이딩된다.
+	 -->
+		<h2></h2>
+		<p>Hello, students</p>
+		<!-- overiding(재정의) 된것은 우선순위이다-->
+		<p style="font-size: 25px;">안녕하세요 선생님</p>
+	</body>
+</html>
