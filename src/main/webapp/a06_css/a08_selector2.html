@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>[계층관계 선택자]오늘도 화이팅</title>
+<style>
+div>strong {
+	background: yellow;
+}
+/* div를 부모로 하는 strong 태그의 배경색상을 노랑색*/
+ul strong {
+	color: dogerblue;
+}
+/* ul을 조상으로 하는 strong태그의 글자색상을 dogerblue*/
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "웹 프로그래밍";
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<div>
+		<div>
+			2학기<strong>gkrtmqsodyd</strong>입니다.
+		</div>
+		<ul id="list">
+			<li><span>HTML5</span></li>
+			<li><strong>CSS3</strong></li>
+			<li>javascript</li>
+		</ul>
+		<div class="warning">60점 이하는 F</div>
+	</div>
+</body>
+</html>

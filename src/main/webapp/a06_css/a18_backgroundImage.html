@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[배경 꾸미기]오늘도 화이팅</title>
+        <style>
+			div{
+				width: 400px;
+				height: 400px;
+				color: blueviolet;
+				font-size: 16px;
+				background-color: skyblue;
+				background-size: 200px 200px;
+				background-image: url("media/spongebob.png");
+				background-repeat: repeat-y; /* 상하로 반복처리*/
+				background-position: center center; /*정렬을 중앙으로 처리*/
+			}
+		</style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "div 박스에 배경 꾸미기";
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+		<hr>
+		<div>
+			SpongeBob is an over-optimitstic sponge that anonys other characters;
+		</div>
+    </body>
+</html>

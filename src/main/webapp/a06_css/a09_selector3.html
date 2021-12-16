@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>오늘도 화이팅</title>
+<style>
+* {
+	color: blue;
+} /* 전체 글자 색상을 노랑색으로 처리*/
+input[type=password] {
+	background: pink;
+}
+</style>
+<script>
+	window.onload = function() {
+		var h2Obj = document.querySelector("h2");
+		h2Obj.innerText = "시작";
+	}
+</script>
+</head>
+<body>
+	<h2></h2>
+	<h3>회원 등록</h3>
+	아이디:
+	<input type="text" name="id" />
+	<br> 패스워드:
+	<input type="password" name="pass" />
+	<br>
+</body>
+</html>
