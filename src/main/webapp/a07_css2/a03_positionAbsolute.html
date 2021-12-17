@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>[절대위치설정]오늘도 화이팅</title>
+		<style>
+		/*
+		# 절대 위치 설정.
+		1. display:absolute
+		2. top, left : 포함되고 있는 요소객체 화면 전체기준으로 위와 왼쪽에서 부터 특정한 위치를 
+
+		# 고정 위치 설정.
+		1. display: fixed
+		화면에 특정한 위치에 공정되어서, 스크롤을 하더라도 해당 위치에 계속 고정적으로 보이게 할 때 사용된다.
+		*/
+		div{
+			display: inline-block;
+			position: absolute;
+			border: 1px solid lightgray;
+		}
+		div>p{ /* p태그의 공통 css 설정이고, 절대위치로 지정 */
+			display: inline-block;
+			position: absolute;
+			height: 20px;
+			width: 15px;
+			background: lightgray;
+		}
+		#fixed{
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			width: 100px;
+			padding: 5px;
+			background: red;
+			color: white;
+		}
+		</style>
+		<script>
+		window.onload=function(){
+			var h2Obj = document.querySelector("h2");
+			h2Obj.innerText = "Merry Christmas";
+		}
+		</script>
+	</head>
+	<body>
+		<h2></h2>
+		<div>
+			<img src="media/christmastree.png" width="200" height="200" alt="크리스마스 트리">
+			<!--각 p태그 안에 들어가 글자와 위치를 지정 처리 -->
+			<p style="left: 50px; top: 30px;">M</p>
+			<p style="left: 100px; top: 0px;">E</p>
+			<p style="left: 100px; top: 80px;">R</p>
+			<p style="left: 150px; top: 110px;">R</p>
+			<p style="left: 30px; top: 130px;">Y</p>
+		</div>
+		<div id="fixed">예수님이 탄생하셨습니다!</div>
+	</body>
+</html>

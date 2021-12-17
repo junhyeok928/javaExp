@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>오늘도 감사한 날! 화이팅!</title>
+
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "시작";
+            };
+        </script>
+        <style>
+            div {
+                display: inline-block;
+                bottom: 20px;
+            }
+            .image:hover {
+                position: relative;
+                
+                width: 200px;
+                height: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2></h2>
+        <div><img class="image" src="apple.png" /></div>
+        <div><img class="image" src="banana.png" /></div>
+        <div><img class="image" src="mango.png" /></div>
+        <div><img class="image" src="mio.png" /></div>
+        <div><img class="image" src="spongebob.png" /></div>
+    </body>
+</html>

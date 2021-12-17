@@ -13,6 +13,29 @@
                 color: white;
                 background: red;
             }
+            #down:hover{
+                position: relative;
+                left: 20px;
+                top: 20px;
+                background: green;
+            }
+            #up:hover{
+                position: relative;
+                right: 20px;
+                bottom: 20px;
+                background: green;
+            }
+            #name:hover{
+                position: relative;
+                background: blue;
+                font-size: 25px;
+                width: 200px;
+                height: 200px;
+            }
+            /*
+            ex) 학생의 이름을 5개를 리스트하고, 해당 이름 커서를 위치시켰을때,
+            상단 중앙에 글자크기 , div크기를 크게하고, 배경색상도 변경되어 출력
+            */
         </style>
         <script>
             window.onload = function () {
@@ -25,10 +48,19 @@
         <h2></h2>
         <hr />
         <div>T</div>
-        <div>h</div>
+        <div id="down">h</div>
         <div>a</div>
         <div>n</div>
-        <div>k</div>
+        <div id="up">k</div>
         <div>2</div>
+        <hr>
+        <h3>학생이름</h3>
+        <ol>
+            <li><div id="name">전준혁</div></li>
+            <li><div id="name">전준혁</div></li>
+            <li><div id="name">전준혁</div></li>
+            <li><div id="name">전준혁</div></li>
+            <li><div id="name">전준혁</div></ol>
+        </ol>
     </body>
 </html>

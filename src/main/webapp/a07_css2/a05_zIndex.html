@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>오늘도 화이팅</title>
+        <style>
+            /*
+		# z-index 속성
+		1. 요소객체들 간의 position을 절대위치(absolute)를 지정할 때,
+			겹쳐서 화면에 나올 때가 있는데, 이겹친 요소객체의 화면에 나오는 우선 순위를
+			지정할 때, 활용된다.
+		2. z-index의 값이 높을 수록 화면에 나타내는 우선 순위가 높아진다.
+
+		ex) div 배경색상/글자색상 절대지정한 후, 인사말을 입력해서 가장 우선순위가 높게하여
+			출력하세요.
+		*/
+            div,
+            img {
+                position: absolute;
+            }
+            img {
+                height: 140px;
+                width: 100px;
+            }
+            #spadeA {
+                left: 10px;
+                top: 20px;
+            }
+            #spade2 {
+                left: 40px;
+                top: 30px;
+            }
+            #spade3 {
+                left: 80px;
+                top: 40px;
+            }
+            #spade7 {
+                left: 120px;
+                top: 50px;
+            }
+			#greet{
+				z-index: 3;
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				color: navy;
+				top: 40px;
+				left: 40px;
+			}
+        </style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "시작";
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+		<div id="greet">안녕하세요</div>
+		<img id="spadeA" src="media/spade-A.png" alt="스페이드A">
+		<img id="spade2" src="media/spade-2.png" alt="스페이드2">
+		<img id="spade3" src="media/spade-3.png" alt="스페이드3">
+		<img id="spade7" src="media/spade-7.png" alt="스페이드7">
+
+
+		
+    </body>
+</html>

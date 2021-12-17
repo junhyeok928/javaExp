@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>[float]오늘도 화이팅</title>
+		<style>
+		/*
+		# float
+		1. 오른쪽이나 왼쪽에 다른 요소객체와 함께 공간을 잡고 처리 될 때, 사용된다.
+		2. float:right - 화면에 오른쪽에 설정되어 출력
+		*/
+		#float{
+			float:right;
+			border: 1px dotted black;
+			width: 8em;
+			padding: 0.25em;
+			margin: 1em;
+		}
+		</style>
+		<script>
+		window.onload=function(){
+			var h2Obj = document.querySelector("h2");
+			h2Obj.innerText = "학기말 공지";
+		}
+		</script>
+	</head>
+	<body>
+		<h2></h2>
+		<p id="float">
+			24일은 피아니스트 조성진의 크리스마스 특별 연주가 있습니다.
+		</p>
+		<p>
+			이제 곧 겨울 방학이 시작됩니다. 학기 중 못다한 java, c+프로그래밍 열심히 하기 바랍니다.
+			인턴을 준비하는 학생들은 프로젝트 개발을 더욱 힘쓰세요. 그럼 다음 학기에 만나요.
+		</p>
+	</body>
+</html>

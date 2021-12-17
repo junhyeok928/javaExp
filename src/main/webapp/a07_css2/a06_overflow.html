@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[overflow]오늘도 화이팅</title>
+        <style>
+            /*
+            # overflow 속성
+            1. 요소객체로 설정한 넓이나 높이 보다, 내용 문자열이나 요소객체들이 더 많을 때,
+            	이에 대한 처리 옵션을 설정한다.
+            	div, p
+            */
+            p {
+                width: 200px;
+                height: 150px;
+                background: yellow;
+            }
+            .hidden {
+                overflow: hidden;
+            } /* 보이지 않게 처리 */
+            .visible {
+                overflow: visible;
+                
+            } /* 그냥 내용을 보이게 처리 */
+            .scroll {
+                overflow: scroll;
+            } /* scolling이 생성 처리 */
+			span:active {
+				visibility: hidden;
+			} /* 공간을 잡고 보이지 않게 처리.. */
+        </style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "overflow";
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <p>
+            스프링 프레임워크(영어: Spring Framework)는 자바 플랫폼을 위한 오픈 소스 애플리케이션
+            프레임워크로서 간단히 스프링(Spring)이라고도 한다. 동적인 웹 사이트를 개발하기 위한 여러
+            가지 서비스를 제공하고 있다. 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는
+            전자정부 표준프레임워크의 기반 기술로서 쓰이고 있다.
+        </p>
+        <br />
+        <br /><br /><br /><br /><br />
+        <p class="hidden">
+            스프링 프레임워크(영어: Spring Framework)는 자바 플랫폼을 위한 오픈 소스 애플리케이션
+            <span>프레임워크</span> 로서 간단히 스프링(Spring)이라고도 한다. 동적인 웹 사이트를 개발하기 위한 여러
+            가지 서비스를 제공하고 있다. 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는
+            전자정부 표준프레임워크의 기반 기술로서 쓰이고 있다.
+        </p>
+        <br />
+        <p class="visible">
+            스프링 프레임워크(영어: Spring Framework)는 자바 플랫폼을 위한 오픈 소스 애플리케이션
+            프레임워크로서 간단히 스프링(Spring)이라고도 한다. 동적인 웹 사이트를 개발하기 위한 여러
+            가지 서비스를 제공하고 있다. 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는
+            전자정부 표준프레임워크의 기반 기술로서 쓰이고 있다.
+        </p>
+        <br /><br /><br /><br /><br /><br />
+        <p class="scroll">
+            스프링 프레임워크(영어: Spring Framework)는 자바 플랫폼을 위한 오픈 소스 애플리케이션
+            프레임워크로서 간단히 스프링(Spring)이라고도 한다. 동적인 웹 사이트를 개발하기 위한 여러
+            가지 서비스를 제공하고 있다. 대한민국 공공기관의 웹 서비스 개발 시 사용을 권장하고 있는
+            전자정부 표준프레임워크의 기반 기술로서 쓰이고 있다.
+        </p>
+    </body>
+</html>
