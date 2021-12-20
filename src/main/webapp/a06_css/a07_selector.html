@@ -14,6 +14,17 @@
         body.main{background:aliceblue;} /* 태그가 body이고 속성으로 클래스가 선언된 경우 */
         #list{background:mistyrose;}
         div#etc{background:pink;}
+
+        /* 특정한 태그에 속성으로 클래스이거나 아이디일 때, 활용하는 패턴*/
+        cls01{
+            background-color: yellow;
+        }
+        cls02{
+            color: green;
+        }
+        cls03{
+            border: 1px solid green;
+        }
         </style>
         <script>
         window.onload = function() {
@@ -25,6 +36,8 @@
     <body class="main">
         <h2></h2>
         <hr>
+        <!-- 하나의 태그에 여러가지 클래스가 적용될 때 class="클래스명1 ..." 로 선언사용 가능-->
+        <h4 class="cls01 cls02 cls03">여러 클래스 적용</h4>
         <div>
             <div>2학기 <strong>학습내용</strong></div>
             <ul id="list">

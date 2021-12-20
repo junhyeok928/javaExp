@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[외부 js 호출]오늘도 화이팅</title>
+        <style></style>
+		<script type="text/javascript" src="z01_outer.js" ></script>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "외부 함수 호출!!";
+            };
+        </script>
+        <!-- 외부에서 선언된 js를 불러올 때는 따로 script를 선언하고 속성 src를 통해서
+		해당 파일을 불러와야 한다.-->
+    </head>
+    <body>
+		<!-- 외부 z01_outer.js에 있는 함수 호출-->
+        <h2 onclick="call()"></h2>
+    </body>
+</html>

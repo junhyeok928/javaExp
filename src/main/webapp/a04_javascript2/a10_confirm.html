@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[confirm]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "confirm 처리";
+
+                var inUpdate = confirm("수정하시겠습니까?");
+                // 결과로 true/false가 나온다.
+                console.log(isUpdate);
+                if (isUpdate) {
+                    alert("수정 완료하셨습니다!!");
+                } else {
+                    alert("수정 취소되었습니다!!");
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+    </body>
+</html>

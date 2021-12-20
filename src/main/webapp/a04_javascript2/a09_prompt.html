@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "예제";
+
+                var price = prompt("물건 가격을 입력하세요.", "12000");
+                var cnt = prompt("물건 갯수를 입력하세요.", "3");
+                // h2Obj.innerText = "물건 가격: "+price+ " 물건 갯수 : "+cnt+" 총계 : "+(price*cnt);
+                if (price != null && cnt != null) {
+                    document.write("<h3>가격:" + price + "</h3>");
+                    document.write("<h3>갯수:" + cnt + "</h3>");
+                    document.write("<h3>총계:" + price * cnt + "</h3>");
+                } else {
+                    alert("값을 입력하고 확인을 누르세요");
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+    </body>
+</html>

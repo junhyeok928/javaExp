@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[script태그로 실행]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            /*
+		# script
+		1. js는 head나 body에 어디서든지  실행가능하다
+		2. 웹 페이지 내에 여러번 삽입이 가능하다.
+		*/
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "script 태그로 실행 예제";
+            };
+            function chText(obj) {
+                // chText(this) 를 통해 객체를 받아서
+                // obj : 매개변수로 받은 객체, 하단에 클릭한, h3로 매개변수로 받아서
+                // h3 DOM 출력처리 속성(innerText)
+                obj.innerText = "안녕하세요!(글자변경됨)";
+            }
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h3 onclick="chText(this)">글자가 바뀌어라</h3>
+        <!-- 클릭시, chText)this)로 선언된 함수에 클릭한 객체 h3를 그대로 전송한다.-->
+        <h3 onclick="chColor(this)">색상이 바뀌어라</h3>
+        <!-- body에서도 선언된 js을 호출할 수 있다..-->
+        <script>
+            function chColor(obj) {
+                // 태그에 <h3 style="속성:속성값;" 을 설정할 수 있듯이
+                // style 속성을 선언하여 속성값을 할당할 수 있다.
+                obj.style.color = "navy";
+            }
+        </script>
+        <!--
+		h4를 만들고 클릭시, 해당 클릭한 h4의 내용을 글자색/배경색/내용이 변경되게 처리
+		-->
+        <h4 onclick="ex(this)">예제입니다</h4>
+        <script>
+            function ex(obj) {
+                obj.innerText = "글자변경";
+                obj.style.background = "red";
+                obj.style.color = "blue";
+            }
+        </script>
+    </body>
+</html>

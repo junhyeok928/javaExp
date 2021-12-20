@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[js의 실행순서]오늘도 화이팅</title>
+        <style></style>
+        <script>
+			// 1. 실행을 코드 순서로 처리된다.
+			// 2. DOM은 선언 후, 호출하여야 한다.
+			// 3. window.onload=fucntion(){} 내용은 맨마지막에 로딩 후, 실행된다.
+			// 		그래서 body에 있는 모든 DOM을 호출할 수 있다.
+			// 4. 함수는 로딩된 후 , 이벤트를 통해 처리 되기에 선언적 함수의 경우 순서가 앞에 선언되어도
+			// 		호출이 된다.
+
+            console.log("실행1");
+            window.onload = function () {
+                console.log("실행4");
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "js의 실행 순서 규칙";
+                console.log("실행5");
+            };
+            console.log("실행2");
+            function callFun() {
+                alert("함수 호출");
+                var h1Obj = document.querySelector("h1");
+                h1Obj.style.background = "yellow";
+            }
+        </script>
+    </head>
+    <body>
+        <h1>안녕</h1>
+        <script>
+            alert("DOM객체 호출 직전");
+            var h1Obj = document.querySelector("h1");
+            h1Obj.innerText = "hello(변경)-DOM인식";
+            // h1태그를 선언하지 않으면 에러발생
+        </script>
+        <h2></h2>
+        <script>
+            console.log("실행3");
+        </script>
+    </body>
+</html>

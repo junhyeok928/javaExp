@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[document.write()]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Obj = document.querySelector("h2");
+                h2Obj.innerText = "웹 페이지 출력";
+				// 마지막에 수행하는 기존 DOM의 내용을 없애고 덮어씌워주는 처리가 된다.
+				document.write("<h4>마지막 수행 내용1!!</h4>")
+				document.write("<h4>마지막 수행 내용2!!</h4>")
+            };
+			document.write("<h3>안녕하세요!!</h3>")
+			document.write("<p>document.write()은 어떤 효과가??</p>")
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+    </body>
+</html>

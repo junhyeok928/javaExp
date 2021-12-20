@@ -8,6 +8,14 @@
 		# float
 		1. 오른쪽이나 왼쪽에 다른 요소객체와 함께 공간을 잡고 처리 될 때, 사용된다.
 		2. float:right - 화면에 오른쪽에 설정되어 출력
+
+		# float송성 해제하기
+		1. float의 속성으로 left/right을 하면 계속 다음 속성이 정렬이 되는데,
+			어느 순간 더 이상 요소객체를 정렬을 필요가 없는 경우가 있다.
+			2. 이 때, cleat/both 속성값을 통해서 그 전으로 되돌리고자 할 떄, 사용된다.
+				clear : both; 오른쪽/왼쪽을 취소
+				clear:left; 왼쪽을 취소
+				clear:right; 오른쪽을 취소
 		*/
 		#float{
 			float:right;
