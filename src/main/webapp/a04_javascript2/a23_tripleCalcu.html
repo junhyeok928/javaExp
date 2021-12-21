@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[비교연산식]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                // (조건-비교연산자, 논리연산자)? 결과1:결과2
+                // 조건이 true일때는 결과1을 처리, 조건이 false일때는 결과2를
+                // 바로 처리하여 출력할 때 사용된다.
+                var age = prompt("나이 입력","")
+                h2Arr[0].innerText = "나이" + age
+                h2Arr[1].innerText = "구분" + (age>=18?"성년":"미성년")
+                /*
+                ex) 나이를 입력받아 5미만 65세이상일 때 무료 기외에는 유료 처리를 3항연사자에 의해 처리
+                */
+                h2Arr[2].innerText = "구분" + ((age>=65 || age<5)?"무료":"유료")
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>

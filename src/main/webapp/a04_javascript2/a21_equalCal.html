@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[비교연산식]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                var score = prompt("점수를 입력하세요", "1");
+                h2Arr[0].innerText = "점수 " + score;
+                h2Arr[1].innerText = "합격 여부 " + (score >= 70);
+                h2Arr[2].innerText = "합격점 여부 " + (score == 70);
+                h2Arr[3].innerText = "불합격 여부 " + (score < 70);
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>

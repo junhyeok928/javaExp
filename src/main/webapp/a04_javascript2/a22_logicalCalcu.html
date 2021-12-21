@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[논리연산자]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                /*
+                # 논리 연산자
+                두개이상의 비교연산자를 논리식인 and(&&), or (||) not(!)으로
+                연결하여 논리값을 도출해서 boolean값을 처리하는 것을 말한다.
+                2. 범위에 해당하거나 (B학점은 80~ 90, 무료는 5세미만, 65이상),
+                    두개의 비교값이 충족될 때(id와 패스워드가 다 맞을 때 인증처리) 등
+                    여러가지 실제적인 상황에서 논리값을 판단할 때 사용된다
+                */
+                var point = 80;
+                h2Arr[0].innerText = "B학점여부:" + (point >= 80 && point < 90);
+                var age = 66;
+                h2Arr[1].innerText = "무료입장여부:" + (age < 5 || age >= 65);
+                var id = "himan";
+                var pass = "7777";
+                h2Arr[2].innerText = "인증여부:" + (id == "himan" && pass == "7777");
+
+                var price = prompt("가격을 입력", "1");
+                var cnt = prompt("권수를 입력", "1");
+                if((price*cnt) >= 100000 && (price*cnt) < 200000){
+                    alert("일반고객입니다")
+                }else if((price*cnt) >= 200000){
+                    alert("VIP고객입니다.")
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>
