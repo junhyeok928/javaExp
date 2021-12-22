@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[조건문]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                var score = prompt("점수를 입력하세요", 0);
+                var grade;
+                if (score >= 90) {
+                    grade = "A";
+                } else if (score >= 80) {
+                    // else 구문에 위에서 나타난 조건을 제외를 포함 score<90 코드가 내부적으로
+                    // 처리된 것을 말한다.
+                    grade = "B";
+                } else if (score >= 70) {
+                    grade = "C";
+                } else if (score >= 60) {
+                    grade = "D";
+                } else {
+                    grade = "F";
+                }
+                h2Arr[0].innerText = "점수는" + score + ", 등급은 " + grade;
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>

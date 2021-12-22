@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[조건문]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                /*
+
+                */
+                var chNum = prompt("정답을 입력하세요[1~4]", 1);
+                if (chNum == 3) {
+                    // 해당 조건이 true일 때, 처리할 내용
+                    h2Arr[0].innerText = "정답";
+                } else {
+                    // 해당 조건이 false일 때, 처리할 내용
+                    h2Arr[0].innerText = "오답";
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>

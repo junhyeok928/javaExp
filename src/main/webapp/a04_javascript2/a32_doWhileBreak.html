@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[do while]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var divObj = document.querySelector("div");
+
+                divObj.innerHTML = "<h2>주문 받습니다!!</h2>";
+                do{
+                    var orderMenu = prompt("주문하실 음식은?","")
+                    divObj.innerHTML += "<h3>" + orderMenu+"</h3>";
+
+                    // if(!confirm("계속하시겠습니가?")){
+                    //     break;
+                    // }
+                }while(confirm("계속하시겠습니까??")); // 무한반복처리
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>
