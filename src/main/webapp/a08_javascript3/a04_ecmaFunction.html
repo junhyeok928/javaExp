@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[ECMA6형 함수]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                // 1. 변수형 함수.
+                //     var 함수명 = function(){}' 형태로 선언후, 호출이 가능하다.
+                var fun01 = function (num01, num02) {
+                    // alert(num01+" + "+num02+" = " + (num01+num02))
+                    return num01 + " + " + num02 + " = " + (num01 + num02);
+                };
+                //  호출
+                h2Arr[0].innerText = fun01(30, 25);
+
+                // 2. 화살표 함수
+                //      함수명 = (매개변수1, 매개변수2) => 리턴값;
+                const multi = (num01, num02) => num01 * num02;
+                h2Arr[1].innerText = multi(20, 30);
+
+                // var chAdult2 = function (age) {
+                //     return age >= 18 ? "성년" : "미성년";
+                // };
+                // const chAdult = (age) => (age >=18 ? "성인" : "미성년");
+                // var inputAge = prompt("나이를 입력하세요", "1");
+                // h2Arr[2].innerText = chAdult(25);
+                
+                var inputAge = prompt("나이입력", "1");
+                const chAdult = (age) => (age >= 65 || age < 5 ? "무료" : "유료");
+                h2Arr[2].innerText = chAdult(inputAge);
+            };
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+    </body>
+</html>

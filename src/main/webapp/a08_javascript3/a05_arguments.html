@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[함수연습]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                /*
+                1. js는 입력처리를 효과적으로 지원하는 객체와 여러가지 형식이 있다.
+                    1) arguments 객체 활용..
+                    js에서는 하나의 함수정의로 여러 매개변수가 다르게 호출하는 것을 처리할 수 있다.
+                    이 떼, 다양한 매개변수는 arguments 키워드로 배열을 받아서 처리할 수있다.
+                */
+            };
+            function call() {
+                let pObj = document.querySelector("p");
+                pObj.innerText = "";
+                // call('사과','바나나')를 호출하면 let arguments = ["사과","바나나"]
+                for (let i = 0; i < arguments.length; i++) {
+                    pObj.innerHTML += "<h3>" + arguments[i] + "</h3>";
+                }
+            }
+            function call2() {
+                console.log(arguments);
+            }
+            function call3() {
+                var sum = 0;
+                var len = arguments.length;
+                for (var i = 0; i < len; i++) {
+                    sum += argumnets[i];
+                }
+                alert("매개변수 갯수:" + len + ", 총계:" + sum);
+            }
+        </script>
+    </head>
+    <body>
+        <h2 onclick="call('사과')">한개의 매개변수</h2>
+        <h2 onclick="call('딸기','바나나')">두개의 매개변수</h2>
+        <h2 onclick="call('키위','오렌지','수박')">세개의 매개변수</h2>
+        <h3 onclick="call3(1000)">숫자 한개</h3>
+        <h3 onclick="call3(1000,2000)">숫자 두개</h3>
+        <h3 onclick="call3(1000,2000,3000)">숫자 세개</h3>
+        <p></p>
+    </body>
+</html>

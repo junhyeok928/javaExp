@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[가변형 매개변수]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                /// numbers
+                // ...변수명 : 가변적으로 매개변수를 받은 데이터를 배열로 변수명으로 할당한다,
+            };
+            function test(...numbers){  // numbers라는 배열변수로 매개변수를 받는다.
+                console.log("#함수호출#")
+                console.log(numbers)
+            }
+            function books(...book){
+                console.log("#책호출#")
+                console.log(book)
+            }
+        </script>
+    </head>
+    <body>
+        <h2 onclick="test(1000)">매개변수1</h2>
+        <h2 onclick="test(1000,2000)">매개변수2</h2>
+        <h2 onclick="test(1000,2000,3000)">매개변수3</h2>
+        <h3 onclick="books('자바기초')">자바기초</h3>
+        <h3 onclick="books('프로그래밍 개요','스프링까지')">프로그래밍 개요, 스프링까지</h3>
+        <h3 onclick="books('오라클', '파이썬확인', '재미있는 js')">오라클, 파이썬확인, 재미있는 js</h3>
+        <p></p>
+    </body>
+</html>
