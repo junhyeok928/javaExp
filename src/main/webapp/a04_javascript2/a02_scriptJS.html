@@ -13,6 +13,12 @@
             window.onload = function () {
                 var h2Obj = document.querySelector("h2");
                 h2Obj.innerText = "script 태그로 실행 예제";
+                // 코드로 대상객체의 리스너 속성에 함수로 할당하여 처리
+                // 객체.onclick = 함수;
+                h2Obj.onclick = function () {
+                    // this: 이벤트가 일어나는 대상객체
+                    this.innerText = "js코드로 익명함수 할당";
+                };
             };
             function chText(obj) {
                 // chText(this) 를 통해 객체를 받아서

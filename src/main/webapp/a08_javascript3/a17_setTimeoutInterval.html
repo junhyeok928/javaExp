@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script>
+            window.onload = function () {
+                var h2Arr = document.querySelectorAll("h2");
+                h2Arr[0].innerText = "시작";
+            };
+            /*
+            # 시간 이후 및 반복 처리 내장 함수.
+            1. var set01 = setTimeout(처리할 함수, 1/1000초)
+                해당 시간(1/1000)초 후에 수행할 내용을 함수에 기술하여 처리하게 한다.
+                자원의 해제는 clearTimeout(set01); 형태로 처리한다.
+            2. var int01 = setInterval(반복할함수, 1/1000초)
+                해당 시간(1/1000)초 마다 수행한 내용을 반복할 함수에 정의한다.
+                자원의 해제는 clearInterval(int01);로 수행한다.
+            */
+           function start(obj) {
+                obj.innerText("시작!!");
+           }
+        </script>
+    </head>
+    <body>
+        <h2 onclick="start(this)"></h2>
+    </body>
+</html>
