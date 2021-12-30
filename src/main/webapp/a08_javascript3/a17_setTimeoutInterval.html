@@ -18,12 +18,49 @@
                 해당 시간(1/1000)초 마다 수행한 내용을 반복할 함수에 정의한다.
                 자원의 해제는 clearInterval(int01);로 수행한다.
             */
-           function start(obj) {
-                obj.innerText("시작!!");
-           }
+            function start(obj) {
+                var tds = document.querySelectorAll("td");
+                var int01 = setInterval(function () {
+                    // td의 모든 셀의 색상의 초기화 처리
+                    for (var idx = 0; idx < tds.length; idx++) {
+                        tds[idx].style.background = "";
+                    }
+                    // 임의의 idx 설정(0~9)
+                    var ranIdx = Math.floor(Math.random() * 9);
+                    console.log(ranIdx);
+                    // 임의의 td의 색상의 핑크로 설정..
+                    tds[ranIdx].style.background = "pink";
+                }, 500);
+
+                obj.innerText=("시작!! 10초후 종료");
+                var set01 = setTimeout(function () {
+                    // 반복종료 : 10초후에 var int01 = setInterval에 선언된 내용을 중단 처리
+                    // 하여 반복 중지
+                    clearInterval(int01);
+                    obj.innerText = "종료!!";
+                    clearTimeout(set01);
+                }, 10000);
+            }
         </script>
     </head>
     <body>
         <h2 onclick="start(this)"></h2>
+        <table width="300px" height="300px" border="">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
     </body>
 </html>

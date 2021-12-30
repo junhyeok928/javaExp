@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2")
+                    .text("map 처리 연습")
+                    .click(function () {
+                        var colors = ["red", "yellow", "red", "orange"];
+                        var array = $("h3").map(function (idx, element) {
+                            $(element).css("color", colors[idx]);
+                            return idx + 1 + ") " + $(this).text();
+                        });
+                        // for (let idx = 0; idx < array.length; idx++) {
+                        //     $("span").eq(idx).text(array[idx]);
+                        // }
+                        $("span").each(function (idx) { 
+                             $(this).text(array[idx]);
+                        });
+                    });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <h3>사과</h3>
+        <h3>바나나</h3>
+        <h3>딸기</h3>
+        <h3>오렌지</h3>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </body>
+</html>

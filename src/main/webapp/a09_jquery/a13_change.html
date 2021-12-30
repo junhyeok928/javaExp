@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>title</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function () {
+                $("h2").text("select의 change 메서드 사용");
+                //select형 요소객체에서 선택을 바꿀때, 처리되는 이벤트를 사용할 수 있다.
+                $("[name=phone]").change(function () {
+                    //$(":selected") : 선택되어진 option 항목에 있는 text 문자를 가져와서
+                    var data = $("[name=phone]>:selected").text();
+                    //선택된 값을 span으로 출력한다.
+                    $("span:eq(0)").text(data);
+                });
+
+                $("[name=loc]").change(function () {
+                    //$("[name=loc]>:selected") : name = loc의 하위에 선택되어진 것을 저장
+                    $("span:eq(1)").text(
+                        $("[name=loc]>:selected").text() +
+                            "(" +
+                            $("[name=loc]>:selected").val() +
+                            ")"
+                    );
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <select name="phone">
+            <option>010</option>
+            <option selected="selected">02</option>
+            <option>070</option>
+        </select>
+        선택된 값 : <span></span>
+
+        <br />
+
+        <select name="loc">
+            <option value="A01">서울/경기</option>
+            <option value="A02">강원도</option>
+            <option value="A03">충청도</option>
+        </select>
+        지역 : <span></span>
+    </body>
+</html>

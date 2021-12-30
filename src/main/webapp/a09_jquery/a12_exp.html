@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style>
+            td {
+                width: 25%;
+                height: 25%;
+            }
+        </style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("jquery 시작!!");
+                // .속성관련메서드({속성:속성값,속성2:속성값2})
+                // .메서드1().메서드2()..
+                $("td")
+                    .css({ "text-align": "center", "font-size": "20pt" })
+                    .text(function (idx) {
+                        return idx + 1;
+                    });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <table width="400px" height="400px" border="">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>

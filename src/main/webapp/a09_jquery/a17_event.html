@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("jquery event");
+                /*
+                # jquery 이벤트 처리
+                1. $("선택자").이벤트명(핸들러함수)
+                2. $("선택자").on("이벤트명",핸들러 함수);
+                3. $("선택자").on({"이벤트명1":핸들러 함수,
+                                    "이벤트명2":핸들러함수
+                });
+                */
+                $("h2").mouseover(function () {
+                    $(this).css("background", "yellow");
+                });
+                $("h2").on("mouseout", function () {
+                    $(this).css("background", "pink");
+                });
+                $("[name]").on({
+                    focus: function () {
+                        $(this).css("background", "yellow");
+                    },
+                    blur: function () {
+                        $(this).css("background", "");
+                    },
+                    keyup: function () {
+                        $("div").text($(this).val());
+                        $("span").text($(this).val().length + "/20");
+                    },
+                });
+                $("textarea").on({
+                    focus: function () {
+                        $(this).css("background", "pink");
+                    },
+                    blur: function () {
+                        $(this).css("background", "");
+                    },
+                    keyup: function () {
+                        $("h3").text($(this).val().length + "/10");
+                        if ($(this).val().length > 10) {
+                            $("textarea").css("color", "red");
+                        }
+                    },
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        메시지 입력<br />
+        <textarea> </textarea>
+        <h3></h3>
+
+        이름 <input type="text" name="name" />
+        <span></span>
+        <div></div>
+    </body>
+</html>

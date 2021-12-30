@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("setInterval");
+                $("h2").click(function () {
+                    alert("td의 크기:" + $("td").length);
+                    /*
+                    1. 1단계 왼쪽에서 오른쪽까지 이동하기..
+                        1) DOM 대상 객체 선언.
+                        2) 이동하는 index 변수 선언
+                        3) setInterval을 통해서 반복적으로 처리하는 함수선언
+                            - 배경색상 변경
+                            - 배경색상 초기화처리(추가)
+                        4) setInterval 종료시점 선언
+                            - 끝에 있을 떄,
+                        5) setTimeout으로 시간이 되었을 때 종료 처리
+                    2. 2단계 오른쪽 끝에서 다시 왼쪽 끝, 왼쪽 끝에서 다시 오른쪽 끝으로 이동하기
+                        1) 오른쪽 / 왼쪽으로 이동하는 flag 선언..
+                            true : 오른쪽, false일때 : 왼쪽
+                                - index 0일때, 오른쪽 이동 index++
+                                - index 4일때, 왼쪽으로 이동 index--
+                        - setTimeout으로 시간이 되었을 때 종료 처리
+                    */
+                    var idx = 0; // 변경될 index선언.
+                    var flag = true;
+                    // 1초마다 반복할 내용 선언..
+                    var int01 = setInterval(function () {
+                        $("td").css("background", "");
+                        $("td").eq(idx).css("background", "yellow");
+                        if (flag) {
+                            idx++; // true일 때는 증가 처리
+                        } else {
+                            idx--; // false일 때는 감소 처리
+                        }
+                        // 0 1 2 3 4 ==> 증가되면서 색상이 변경이 된다.
+                        // 마지막 td일때(4) 일때, flag를 false로 바꾸면 다음부터 index가 감소된다.
+                        // 감소되다가 td가 첫번째(0) 일 때, flag를 true로 바꾸면 다음부터 index가 증가된다.
+                        if (idx == 4) {
+                            flag = false;
+                        }
+                        if (idx == 0) {
+                            flag = true;
+                        }
+
+                        // idx 3일때 배경색상을 바꾸었을 때, idx가 4일때, flag를 바꾸어야지
+                        // dix를 4일 때 배경색상을 바꾸고 flag를 바꿀수 있다
+
+                        // if (idx == 5) {
+                        //     // 마지막 cell의 배경색상이 바뀌고 5가 되었을 때
+                        //     clearInterval(int01);
+                        // }
+                    }, 1000);
+                    // 30초후 종료 처리..
+                    var set01 = setTimeout(function () {
+                        clearInterval(int01);
+                        clearTimeout(set01);
+                    }, 30000);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <table width="50%" height="100px" border="">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("jquery 시작!!");
+                /*
+                1. $(배열형다수선택자).기능메서드(function(index){ return 처리한 내용리턴;})
+                */
+                var colors = ["red", "green", "blue", "orange"];
+                $("h2").text(function (idx) {
+                    // h2가 다수일 때, 익명함수에 index를 받아서 처리할 수 있다.
+                    // $(this) : 각 index별 단위 객체를 말하고, 해당 단위 객체의
+                    // 속성을 변경처리 할 수 있다.
+                    $(this).css("background", colors[idx]);
+                    // 최종으로  return할 데이터를 지정하여, 각 h2 마다 다른 문자열을
+                    // 설정할 수 있다
+                    return colors[idx];
+                });
+                var names = ["홍길동", "김길동", "신길동"];
+                $("h3").text(function (idx) {
+                    return names[idx];
+                });
+                var aligns = ["left", "right", "center"];
+                $("h3").attr("align", function (idx) {
+                    return aligns[idx];
+                });
+                $("input").val(function (idx) {
+                    return names[idx]
+                  });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h2></h2>
+        <h3></h3>
+        <h3></h3>
+        <h3></h3>
+    </body>
+</html>

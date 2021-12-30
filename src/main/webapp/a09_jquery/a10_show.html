@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style>
+            div {
+                border: 1px solid blue;
+                width: 300px;
+                height: 300px;
+            }
+        </style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("show/hide 처리");
+                // hide() : 공간을 잡지 않고 사라진다.
+                $(":button").on("click", function () {
+                    var ckVal = $(this).val();
+                    // alert(ckVal);
+                    if (ckVal == "보여라") {
+                        $("h2").show();
+                    }
+                    if (ckVal == "없어져라") {
+                        $("h2").hide();
+                    }
+                });
+                $("div").eq(0).hide(); // 회원등록 화면을 없애기 처리
+                $("div").eq(1).hide();
+                $("h4").on("click", function () {
+                    if ($(this).text() == "회원") {
+                        $("div").eq(0).show();
+                        $("div").eq(1).hide();
+                    }
+                    if ($(this).text() == "비회원") {
+                        $("div").eq(0).hide();
+                        $("div").eq(1).show();
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="button" value="보여라" />
+        <input type="button" value="없어져라" />
+        <h2></h2>
+        <h3>안녕하세요..</h3>
+        <h4>회원</h4>
+        <h4>비회원</h4>
+        <div>회원 등록 화면</div>
+        <div>비회원 등록 화면</div>
+    </body>
+</html>

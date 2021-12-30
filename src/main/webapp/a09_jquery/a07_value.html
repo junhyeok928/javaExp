@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("value값과 text/html");
+                /*
+                # form 하위 요소객체의 value속성 처리
+                1. $("선택자").val() 형식으로 가져오기,
+                ("선택자").val("저장할 데이터") 저장하기 처리
+                */
+                $("#buyBtn").click(function () {
+                    // 구매버튼 클릭시
+                    var name = $("[name=name").val();
+                    var price = $("[name=price").val();
+                    var cnt = $("[name=cnt").val();
+                    // html태그 코드와 함께 추가 처리
+                    $("div").append("<h3>" + name + ", 총" + price * cnt + "원에 구매</h3>");
+                    $("[name=name").val("");
+                    $("[name=cnt").val(0);
+                    $("[name=name").focus();
+                });
+                var cnt = 1;
+                $("#regMember").click(function (e) {
+                    var member = $("[name=member]").val();
+                    $("tbody").append("<tr><th>" + cnt++ + "</th><td>" + member + "</td></tr>");
+                    $("[name=member]").val("");
+                    $("[name=member]").focus();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        등록할 회원 <input type="text" name="member" /><input
+            type="button"
+            value="등록"
+            id="regMember"
+        />
+        <h4>등록된 회원리스트</h4>
+
+        <table width="30%" border="">
+            <col width="30%" />
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>회원명</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <br />
+        물건명 : <input type="text" name="name" value="" size="3" /><br />
+        물건가격: <input type="text" name="price" value="" size="3" /><br />
+        물건갯수: <input type="text" name="cnt" value="" size="3" /><br />
+        <input type="button" value="구매" id="buyBtn" />
+        <div></div>
+    </body>
+</html>

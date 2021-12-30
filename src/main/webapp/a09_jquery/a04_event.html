@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("jquery 시작!!");
+                var cnt=1;
+                $("h2").click(function(){
+                    $(this).text("클릭!!")+cnt++
+                })
+
+                /*
+                # jquery에서 chainning 메서드 처리
+                $("선택자").메서드1().메서드2()...
+                앞에 선택한 선택자에 의해서 기능적인 처리를 중복적으로 누적해서 처리
+                하는 것을 말한다.
+                */
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+    </body>
+</html>

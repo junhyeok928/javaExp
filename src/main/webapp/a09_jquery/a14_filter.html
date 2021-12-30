@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            $("document").ready(function () {
+                $("h2").text("filter처리(클릭)");
+                // filter("선택자") : 해당 요소객체들 가운데
+                // 선택해서 처리할 때, 활용된다.
+                $("li")
+                    .filter(":even")
+                    .css("background", "green")
+                    .end()
+                    .filter(".orange,#apple")
+                    .css("font-size", "30px");
+                // $("li").filter(":even") : li중에 짝수번째를 선택
+                // .end() : filter()로 선택되기 이전에 다시 전체 li를 선택했을 때를 지정
+                // filter(".orange,#apple") : class로 orange와 id값으로 apple이 있는 것을 지정
+                $("td")
+                    .text(function (idx) {
+                        return idx + 1;
+                    })
+                    .css({ "font-size": "30pt", "text-align": "center" });
+                $("h3").click(function (e) {
+                    $("tr").filter(":odd").css({ background: "yellow", color: "blue" });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h2></h2>
+        <ul>
+            <li>아이템1</li>
+            <li>아이템2</li>
+            <li class="orange">아이템3</li>
+            <li>아이템4</li>
+            <li id="apple">아이템5</li>
+            <li>아이템6</li>
+            <li>아이템7</li>
+        </ul>
+        <h3>색변경</h3>
+        <table border="" width="40%">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[]오늘도 화이팅</title>
+        <style></style>
+        <script src="../../a00_com/jquery-3.6.0.js"></script>
+        <script>
+            window.onload = function () {
+                var et01 = new Enter("전준혁", "SBS", "신인", "신인상");
+                et01.show();
+            };
+            class Enter {
+                constructor(name, brod, field, his) {
+                    this.name = name;
+                    this.bord = brod;
+                    this.field = field;
+                    this.his = his;
+                }
+                show() {
+                    var divObj = document.querySelector("div");
+                    var htmlCode = "<h3>연예대상</h3><table border>";
+                    htmlCode += "<tr><th>이름</th><td>" + this.name + "</td></tr>";
+                    htmlCode += "<tr><th>방송사</th><td>" + this.bord + "</td></tr>";
+                    htmlCode += "<tr><th>분야</th><td>" + this.field + "</td></tr>";
+                    htmlCode += "<tr><th>내역</th><td>" + this.his + "</td></tr></table>";
+                    divObj.innerHTML = htmlCode;
+                }
+            }
+            $("document").ready(function () {
+                $("h2").text("jquery 시작!!");
+                var ran01 = Math.floor(Math.random() * 9);
+                var ran02 = Math.floor(Math.random() * 9);
+                $("[name=num01]").val(ran01);
+                $("[name=num02]").val(ran02);
+
+                $(".check").click(function () {
+                    var result = parseInt($("[name=result]").val());
+                    if( result == (ran01*ran02)){
+                        $(".re").text("정답");
+                    }else{
+                        $(".re").text("오답");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!-- [1단계:확인] 1. 클래스형 생성자 객체형태로 2021년 연예대상자(이름, 방송사,분야, 상내역)을 필드로 지정하고, show()를 통해서
+테이블로 출력하세요.
+[2단계:확인] 2. 1X5 테이블을 만들고, 30초동안 배경색상이 왼쪽에서 오른쪽으로 이동, 오른쪽에서 왼쪽으로 이동되게 처리하세요.
+[1단계:개념] 3. jquery 환경설정 방법 2가지를 기술하세요
+[1단계:확인] 4. jquery를 활용한 action 메서드를 활용하여 h7의 배경색상과 글자를 다르게 처리하세요.
+[1단계:개념] 5. jquery의 데이터 출력 메서드들을 기술하세요. 
+[1단계:개념] 6. jquery의 속성설정 메서드들을 기술하세요.
+[1단계:확인] 7. jquery로 구구단의 문제를 임의로 input을 통해서 초기 화면에 출력하고, 
+            답을 입력하고 이에 따라 정답여부를 출력하세요.
+            [ 5 ]X[ 6 ] = [  ] [정답확인]        -->
+        <h2></h2>
+        <h2></h2>
+        <div></div>
+        <h2>예제7</h2>
+        <input type="text" name="num01" /> X <input type="text" name="num02" /> =
+        <input type="text" name="result" /> <input type="button" value="정답확인" class="check" />
+        <h3 class="re"></h3>
+        <h2 onclick="start(this)"></h2>
+    </body>
+</html>
