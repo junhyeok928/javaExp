@@ -3,9 +3,11 @@
 1. dao 작성
 	1) 공통 필드 선언
 		Connection(연결객체),
-		Statement(대화객체),
+		Statement(대화객체), PrepatedStatement(준비된 대화객체)
 		ResultSet(결과객체)
 	2) 공동 메서드 연결
+		Driver(db처리를 위한 공통패키지) 메모리 로딩
+		DriverManager.getConnection("연결정보","계정","비번");
 	
 2. 각 기능 메서드 처리
 	1) 기본 조회 처리 메서드
@@ -36,14 +38,57 @@
 	2) 핵심 기능 처리를 위한 이해
 		- 드리이버부터 시작하여 객체들이 생성되는 과정과 메모리를 해제하는 과정이 연결되어 있다는 개념 이해..
 			생성순서
+			Class.forName("jdbc드라이버");
 			DriverManager ==> Connection ==> Statement ==> ResultSet
 			자원해제순서
-			resultSet ==> Statement ==> Connection
+			resultSet ==> Statement ==> Connection  .close()
 		- 결과객체(ResultSet)의 데이터 처리 기능 메서드.
 			.next() : 행단위로 이동하게 처리해주는 메서드, 다음 데이터가 없을 때까지(boolean)
-				while(rs.next())
+				while(rs.next()) : 행단위로 커서가 이동되게 하는데, 해당 행에 데이터가 있을 때.
 			.getXXX("컬럼명") : 해당 컬럼의 데이터 유형과 select의 컬럼명 맞게 데이터를 가져온다.
 			.getXXX(index) : 해당 컬럼의 데이터 유형과 select로 나열된 순서에 맞게 데이터를 가져온다.
 		- 예외 처리
 			: 자원의 해제에 대한 처리/기타 예외에 대한 처리.
 		- ResultSet을 VO객체에 할당하고 이 VO를 모아서 ArrayList<VO>에 할당하는 처리.
+	4) 기능 메서드 작성 순서
+		- sql 작성 select * from emp where ename = like '%'||'A'||'%';
+		- 기능메서드를 작성하기 위하여 사용할 return 할 단위 VO/변수 확인/클래스생성
+			매개변수로 작성할 VO/변수 확인/클래스생성
+			class Emp{} : 리턴할 단위 객체 ==> ArrayList<Emp>
+			"사원명" : 매개변수로 작성할 객체 ==> String name
+		- 기능메서드 선언
+			public ArrayList<Emp> getEmpList(String ename){
+				ArrayList<Emp> list = new ArrayList<Emp>();
+				return list;
+			}
+		- 기능메서드 안에서 구현한 내용 처리.
+			연결처리
+			sql 문자열로 선언(동적sql ==> 매개형태sql)
+			대화객체
+			결과객체
+			while(){
+				-- 단위객체를 생성자나 메서드로 만들고
+				Emp emp = new Emp(rs.getInt("empno"), rs.getString("ename"),....);
+				list.add(emp);
+				
+			}
+			자원해제
+			
+	여러가지 유형의 매개변수 처리.
+		select * from emp
+		where sal between 1000 and 2000;
+		public ArrayList<Emp> schEmpList(int fr_sal, int to_sal){
+			String sql = "select *"+
+						 "from emp" +
+						 "where sal between"+fr_sal+" and" + to_sal;
+		}
+		select *
+		from emp
+		where ename = 'HIMAN'
+		and job = '사원';
+		public ArrayList<Emp> schEmpList2(String ename, String job){
+			String sql = "select * "+
+						 "from emp "+
+						 "where ename = '"+ename+"'"+
+						 "and job = '"+job+"'; // 숫자데이터와 문자열데이터 입력 시, 동적 sql구분하기
+		}
