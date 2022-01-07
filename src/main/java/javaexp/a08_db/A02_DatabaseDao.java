@@ -109,7 +109,7 @@ public class A02_DatabaseDao {
 				Emp emp = new Emp();
 				emp.setEmpno(rs.getInt("empno"));
 				emp.setEname(rs.getString("ename"));
-				emp.setEJob(rs.getString("job"));
+				emp.setJob(rs.getString("job"));
 				emp.setMgr(rs.getInt("mgr"));
 				emp.setHiredate(rs.getDate("hiredate"));
 				emp.setSal(rs.getDouble("sal"));
@@ -143,7 +143,7 @@ public class A02_DatabaseDao {
 		System.out.println("데이터 크기: " + dao.empList("A").size());
 		System.out.println("# ArrayList<Emp>를 통한 화면 출력");
 		for (Emp emp : dao.empList("A")) {
-			System.out.println(emp.getEname() + "\t" + emp.getEJob());
+			System.out.println(emp.getEname() + "\t" + emp.getJob());
 		}
 	}
 

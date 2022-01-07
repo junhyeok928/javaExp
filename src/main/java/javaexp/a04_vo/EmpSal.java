@@ -1,26 +1,18 @@
 package javaexp.a04_vo;
 
-public class Emp3 {
-	private String dname;
+public class EmpSal{
 	private String ename;
-	private String job;
+	private String grade;
 	private double sal;
-	public Emp3() {
+	public EmpSal() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Emp3(String dname, String ename, String job, double sal) {
+	public EmpSal(String ename, String grade, double sal) {
 		super();
-		this.dname = dname;
 		this.ename = ename;
-		this.job = job;
+		this.grade = grade;
 		this.sal = sal;
-	}
-	public String getDname() {
-		return dname;
-	}
-	public void setDname(String dname) {
-		this.dname = dname;
 	}
 	public String getEname() {
 		return ename;
@@ -28,11 +20,11 @@ public class Emp3 {
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-	public String getJob() {
-		return job;
+	public String getGrade() {
+		return grade;
 	}
-	public void setJob(String job) {
-		this.job = job;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	public double getSal() {
 		return sal;

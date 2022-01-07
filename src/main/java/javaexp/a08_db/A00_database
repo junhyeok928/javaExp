@@ -52,6 +52,9 @@
 		- ResultSet을 VO객체에 할당하고 이 VO를 모아서 ArrayList<VO>에 할당하는 처리.
 	4) 기능 메서드 작성 순서
 		- sql 작성 select * from emp where ename = like '%'||'A'||'%';
+			insert into emp values(emp_seq.nextnal,
+				'홍길동','사원',7991,sysdate, 3500, 1000,10);
+			
 		- 기능메서드를 작성하기 위하여 사용할 return 할 단위 VO/변수 확인/클래스생성
 			매개변수로 작성할 VO/변수 확인/클래스생성
 			class Emp{} : 리턴할 단위 객체 ==> ArrayList<Emp>
@@ -61,19 +64,30 @@
 				ArrayList<Emp> list = new ArrayList<Emp>();
 				return list;
 			}
-		- 기능메서드 안에서 구현한 내용 처리.
-			연결처리
-			sql 문자열로 선언(동적sql ==> 매개형태sql)
-			대화객체
-			결과객체
-			while(){
-				-- 단위객체를 생성자나 메서드로 만들고
-				Emp emp = new Emp(rs.getInt("empno"), rs.getString("ename"),....);
-				list.add(emp);
+			public void insertEmp(Emp ins){
 				
 			}
-			자원해제
-			
+		- 기능메서드 안에서 구현한 내용 처리.
+			# select 
+				연결처리
+				sql 문자열로 선언(동적sql ==> 매개형태sql)
+				대화객체
+				결과객체
+				while(){
+					-- 단위객체를 생성자나 메서드로 만들고
+					Emp emp = new Emp(rs.getInt("empno"), rs.getString("ename"),....);
+					list.add(emp);				
+				}
+				자원해제
+			# DML(insert, update, delete)
+				연결처리
+				트랜젝션(자동 commit false)
+				대화객체생성
+					con.executeUpdate(sql)
+				commit 처리.
+				예외발생시
+					rollback();
+					
 	여러가지 유형의 매개변수 처리.
 		select * from emp
 		where sal between 1000 and 2000;
@@ -92,3 +106,25 @@
 						 "where ename = '"+ename+"'"+
 						 "and job = '"+job+"'; // 숫자데이터와 문자열데이터 입력 시, 동적 sql구분하기
 		}
+		
+3. ResultSet 객체처리..
+	1) 기능 메서드 이해
+		rs.next() : 행단위 이동..
+		rs.getXXX("컬럼명") select 컬럼명	XXX는 해당 컬럼의 데이터 유형
+		while(rs.next){
+			rs.getInt("empno")
+		}
+		
+	2) 리턴할 VO/ArrayList/변수 할당..
+		public Emp XXXX()
+			Emp e=null;
+			if(r.next()){	// 변수나 행이 단일로 나올 때..
+				e = new Emp(rs.getInt("empno"),...);
+		}
+		public ArrayList<Emp> XXXX()
+			ArrayList<Emp> list = new ArrayList<Emp>();
+			while(rs.next()){
+				list.add(new Emp(rs.getInt("empno"),....));
+			}
+	
+	

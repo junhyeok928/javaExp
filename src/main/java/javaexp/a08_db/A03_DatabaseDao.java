@@ -4,7 +4,10 @@ import javaexp.a04_vo.Emp;
 import javaexp.a04_vo.Emp2;
 import javaexp.a04_vo.Emp3;
 import javaexp.a04_vo.Emp4;
+import javaexp.a04_vo.EmpDept01;
+import javaexp.a04_vo.EmpSal;
 import javaexp.a04_vo.EmpSch;
+import javaexp.a04_vo.LocsalSch;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +18,27 @@ public class A03_DatabaseDao {
 	private Connection con;
 	private Statement stmt;
 	private ResultSet rs;
+	// 자원해제 공통 메서드 선언
+	void closeRsc() {
+		if(rs!=null) {try {
+			rs.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+		if(rs!=null) {try {
+			stmt.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+		if(rs!=null) {try {
+			con.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+	}
 
 	public void setConn() throws SQLException {
 		try {
@@ -104,7 +128,24 @@ public class A03_DatabaseDao {
 		String sql = "\"SELECT empno no, ename name, job, deptno\r\n"
 				+ "				FROM emp\r\n"
 				+ "			WHERE deptno = \"+deptno;";
-		
+		// 연결객체 공통 메서드
+		try {
+			setConn();
+			// 대화객체
+			stmt = con.createStatement();
+			// 결과객체
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				list.add(new Emp2(rs.getInt("no"), rs.getString("name"),
+								  rs.getString("job"), rs.getInt("deptno")));
+			}
+			// 자원해제
+			rs.close(); stmt.close(); con.close();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			
+		}
 		
 		return list;
 	}
@@ -114,9 +155,9 @@ public class A03_DatabaseDao {
 	 * - 고급자(메서드정의까지)
 	 * 
 	 * SELECT DNAME, ENAME, JOB, SAL
-FROM EMP e, DEPT d
-WHERE e.DEPTNO  = d.DEPTNO 
-AND JOB LIKE '%'||'MAN'||'%'
+	FROM EMP e, DEPT d
+	WHERE e.DEPTNO  = d.DEPTNO 
+	AND JOB LIKE '%'||'MAN'||'%'
 	 */
 	public ArrayList<Emp3> list3(String job){
 		ArrayList<Emp3> list = new ArrayList<Emp3>();
@@ -124,6 +165,20 @@ AND JOB LIKE '%'||'MAN'||'%'
 				+ "FROM EMP e, DEPT d\r\n"
 				+ "WHERE e.DEPTNO  = d.DEPTNO \r\n"
 				+ "AND JOB LIKE '%'||'MAN'||'%'";
+		try {
+			setConn();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				list.add(new Emp3(rs.getString(1),rs.getString(2),
+								  rs.getString(3),rs.getDouble(4)));
+			}
+			rs.close(); stmt.close(); con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			closeRsc();	// 자원해제 공통 메서드.
+		}
 		return list;
 	}
 	/*
@@ -158,8 +213,25 @@ AND JOB LIKE '%'||'MAN'||'%'
 				+ "FROM EMP e \r\n"
 				+ "WHERE ENAME LIKE '%"+sch.getEname()+"%'\r\n"
 				+ "AND JOB LIKE '%"+sch.getJob()+"%'\r\n"
-				+ "AND SAL BETWEEN "+sch.getFt_sal()+ "AND "+sch.getTo_sal()+"\r\n"
+				+ "AND SAL BETWEEN "+sch.getFr_sal()+ "AND "+sch.getTo_sal()+"\r\n"
 				+ "AND DEPTNO = "+sch.getDeptno());
+		return list;
+	}
+	public ArrayList<EmpSal> getSalGrade(int sal){
+		ArrayList<EmpSal> list = new ArrayList<EmpSal>();
+		String sql = "SELECT ENAME ,grade, sal"+
+					"FROM EMP e ,SALGRADE s"+
+					"WHERE e.SAL BETWEEN losal AND hisal"+
+					"AND SAL = "+sal;
+		return list;
+	}
+	public ArrayList<EmpDept01> empDeptSch(LocsalSch sch){
+		ArrayList<EmpDept01> list = new ArrayList<EmpDept01>();
+		String sql = "SELECT e.*, d.LOC "+
+					 "FROM EMP e , DEPT d "+
+					 "WHERE e.DEPTNO  = d.DEPTNO  "+
+					 "AND loc LIKE '%'||'"+sch.getLoc()+"'||'%'"+
+					 "AND sal BETWEEN "+sch.getFr_sal()+" AND "+sch.getTo_sal();
 		return list;
 	}
 	public static void main(String[] args) {
