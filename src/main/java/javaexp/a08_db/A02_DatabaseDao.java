@@ -32,6 +32,26 @@ public class A02_DatabaseDao {
 		con = DriverManager.getConnection(info,"scott","tiger");
 		System.out.println("접속 성공");
 	}
+	void closeRsc() {
+		if(rs!=null) {try {
+			rs.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+		if(rs!=null) {try {
+			stmt.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+		if(rs!=null) {try {
+			con.close();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}}
+	}
 	// 조회 처리 메서드 구현1단계(출력)
 	public void empList() {
 		// 1. 연결공통메서드 호출
